@@ -1,32 +1,19 @@
 // ── Nav data ──
 const navItems = [
   { label: "Accueil", href: "index.html" },
-  { label: "Locations d'appartements", href: "/locations" },
-  { label: "Le projet", children: [
-    { label: "La vision", href: "/projet/vision" },
-    { label: "Le modèle", href: "/projet/modele" },
-    { label: "Notre équipe", href: "/projet/equipe" },
-  ]},
-  { label: "Le quartier", children: [
-    { label: "Les commerces", href: "/quartier/commerces" },
-    { label: "Le transport", href: "/quartier/transport" },
-    { label: "Les parcs", href: "/quartier/parcs" },
-    { label: "La vie de quartier", href: "/quartier/vie" },
-  ]},
+  { label: "Locations d'appartements", href: "#locations" },
+  { label: "Le projet", href: "/projet" },
+  { label: "Le quartier", href: "quartier.html" },
   { label: "FAQ", href: "#faq" },
-  { label: "Galerie", href: "/galerie" },
-  { label: "À propos", children: [
-    { label: "L'entreprise", href: "/a-propos/entreprise" },
-    { label: "Notre histoire", href: "/a-propos/histoire" },
-    { label: "Notre équipe", href: "/a-propos/equipe" },
-    { label: "Nos partenaires", href: "/a-propos/partenaires" },
-  ]},
+  { label: "Galerie", href: "#galerie" },
+  { label: "À propos", href: "/a-propos" },
   { label: "Contact", href: "#footer" },
 ];
 
 // ── Marquee ──
 (function () {
   const track = document.getElementById('marquee-track');
+  if (!track) return;
   const text = "Fais une réservation maintenant au 514 908-0303.";
   const html = Array(20).fill(null).map(() =>
     `<span class="marquee-item">${text}</span>`
@@ -37,6 +24,7 @@ const navItems = [
 // ── Schools marquee ──
 (function () {
   const track = document.getElementById('schools-track');
+  if (!track) return;
   const schools = ['Concordia', 'Dawson', 'LaSalle', 'McGill'];
   const items = Array(8).fill(schools).flat()
     .map(s => `<span class="schools-item">${s}</span>`).join('');
@@ -175,20 +163,46 @@ document.getElementById('hamburger').addEventListener('click', () => {
   updateMobileMenu();
 });
 
-// ── Navbar scroll shrink ──
+// ── Navbar scroll shrink + auto-hide ──
+let lastScrollY = 0;
+let ticking = false;
+
 window.addEventListener('scroll', () => {
-  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
+  if (!ticking) {
+    requestAnimationFrame(() => {
+      const navbar = document.getElementById('navbar');
+      const currentY = window.scrollY;
+
+      navbar.classList.toggle('scrolled', currentY > 40);
+
+      if (currentY > 80) {
+        navbar.classList.toggle('nav-hidden', currentY > lastScrollY);
+      } else {
+        navbar.classList.remove('nav-hidden');
+      }
+
+      if (currentY > lastScrollY && mobileOpen) {
+        mobileOpen = false;
+        updateMobileMenu();
+      }
+
+      lastScrollY = currentY;
+      ticking = false;
+    });
+    ticking = true;
+  }
 }, { passive: true });
 
 // ── Hero scroll expand ──
 window.addEventListener('scroll', () => {
+  const c = document.getElementById('hero-container');
+  if (!c) return;
   const maxPad = window.innerWidth < 768 ? 8 : 24;
   const progress = Math.min(window.scrollY / 500, 1);
   const pad = Math.round((1 - progress) * maxPad);
-  const c = document.getElementById('hero-container');
   c.style.marginLeft = pad + 'px';
   c.style.marginRight = pad + 'px';
-  c.style.borderRadius = pad + 'px';
+  c.style.borderRadius = `${pad}px ${pad}px 0 0`;
 }, { passive: true });
 
 // ── Apartment table ──
@@ -201,6 +215,7 @@ let sortKey = 'prix';
 let sortDir = 'asc';
 
 function renderTable() {
+  if (!document.getElementById('apt-tbody')) return;
   let data = [...units].sort((a, b) => {
     const av = a[sortKey], bv = b[sortKey];
     if (typeof av === 'string') return sortDir === 'asc' ? av.localeCompare(bv, 'fr') : bv.localeCompare(av, 'fr');
@@ -215,12 +230,13 @@ function renderTable() {
     tbody.innerHTML = `<tr class="empty-row"><td colspan="4">Aucun logement pour ces critères.</td></tr>`;
   } else {
     const statutClass = { 'Disponible': 'statut-dispo', 'Loué': 'statut-loue', 'Réservé': 'statut-reserve' };
+    const isMobile = window.innerWidth < 768;
     tbody.innerHTML = data.map(u => `
       <tr>
         <td class="td-unit">${u.unite}</td>
         <td>${u.superficie} pi²</td>
         <td>${u.chambres}</td>
-        <td class="td-price">${u.prix.toLocaleString('fr-CA')} $/mois</td>
+        <td class="td-price">${u.prix.toLocaleString('fr-CA')} ${isMobile ? '$' : '$/mois'}</td>
         <td>${u.occupation}</td>
         <td><span class="statut-badge ${statutClass[u.statut] || ''}">${u.statut}</span></td>
       </tr>
@@ -242,6 +258,81 @@ function sortTable(key) {
 }
 
 
+// ── Showcase Carousel ──
+const showcasePhotos = [
+  'https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1400',
+  'https://images.pexels.com/photos/2724749/pexels-photo-2724749.jpeg?auto=compress&cs=tinysrgb&w=1400',
+  'https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg?auto=compress&cs=tinysrgb&w=1400',
+  'https://images.pexels.com/photos/1457842/pexels-photo-1457842.jpeg?auto=compress&cs=tinysrgb&w=1400',
+  'https://images.pexels.com/photos/2062426/pexels-photo-2062426.jpeg?auto=compress&cs=tinysrgb&w=1400',
+  'https://images.pexels.com/photos/1080721/pexels-photo-1080721.jpeg?auto=compress&cs=tinysrgb&w=1400',
+];
+let showcaseIdx = 0;
+
+function showcaseGo(idx) {
+  const main = document.getElementById('showcase-main');
+  if (!main) return;
+  showcaseIdx = ((idx % showcasePhotos.length) + showcasePhotos.length) % showcasePhotos.length;
+  main.style.opacity = '0';
+  setTimeout(() => {
+    main.src = showcasePhotos[showcaseIdx];
+    main.style.opacity = '1';
+  }, 200);
+  document.querySelectorAll('.showcase-thumb').forEach((btn, i) => {
+    btn.classList.toggle('active', i === showcaseIdx);
+  });
+}
+
+// ── POI Pills Float ──
+function initPoiCanvas() {
+  const canvas = document.getElementById('poi-canvas');
+  if (!canvas) return;
+
+  const pills = Array.from(canvas.querySelectorAll('.poi-pill'));
+  pills.forEach(p => { p.style.rotate = (p.dataset.rot || '0') + 'deg'; });
+
+  requestAnimationFrame(() => {
+    const cw = canvas.offsetWidth;
+    const ch = canvas.offsetHeight;
+    const cols = 2;
+    const rows = Math.ceil(pills.length / cols);
+
+    const state = pills.map((p, i) => {
+      const pw = p.offsetWidth;
+      const ph = p.offsetHeight;
+      const col = i % cols;
+      const row = Math.floor(i / cols);
+      const cellW = cw / cols;
+      const cellH = ch / rows;
+      const cx = cellW * col + (cellW - pw) / 2 + (Math.random() - 0.5) * cellW * 0.3;
+      const cy = cellH * row + (cellH - ph) / 2 + (Math.random() - 0.5) * cellH * 0.3;
+      return {
+        el: p,
+        cx: Math.max(0, Math.min(cw - pw, cx)),
+        cy: Math.max(0, Math.min(ch - ph, cy)),
+        ax: 14 + Math.random() * 18,
+        ay: 10 + Math.random() * 14,
+        fx: 0.18 + Math.random() * 0.22,
+        fy: 0.15 + Math.random() * 0.2,
+        px: Math.random() * Math.PI * 2,
+        py: Math.random() * Math.PI * 2,
+      };
+    });
+
+    let t0 = null;
+    (function animate(ts) {
+      if (!t0) t0 = ts;
+      const t = (ts - t0) / 1000;
+      state.forEach(s => {
+        const x = s.cx + Math.sin(t * s.fx + s.px) * s.ax;
+        const y = s.cy + Math.sin(t * s.fy + s.py) * s.ay;
+        s.el.style.translate = `${x}px ${y}px`;
+      });
+      requestAnimationFrame(animate);
+    })(performance.now());
+  });
+}
+
 // ── FAQ accordion ──
 function toggleFaq(btn) {
   const item = btn.closest('.faq-item');
@@ -257,7 +348,7 @@ function toggleFaq(btn) {
 }
 
 // ── Footer form ──
-document.getElementById('footer-form').addEventListener('submit', function (e) {
+document.getElementById('footer-form')?.addEventListener('submit', function (e) {
   e.preventDefault();
   this.querySelectorAll('.footer-input, .footer-submit').forEach(el => el.disabled = true);
   document.getElementById('footer-success').classList.add('visible');
@@ -267,3 +358,4 @@ document.getElementById('footer-form').addEventListener('submit', function (e) {
 buildDesktopNav();
 buildMobileNav();
 renderTable();
+initPoiCanvas();

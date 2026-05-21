@@ -70,7 +70,7 @@
   </section>
 
   <!-- ── Apartment Table ── -->
-  <section class="apt-section">
+  <section class="apt-section" id="locations">
     <div class="apt-inner">
       <div class="apt-heading">
         <p class="apt-eyebrow">Logements disponibles</p>
@@ -81,10 +81,6 @@
         <div class="apt-img-wrap">
           <img class="apt-img" src="assets/pexels-matreding-33825327.jpg" alt="Appartements au centre-ville de Montréal" />
           <div class="apt-img-overlay"></div>
-          <div class="apt-img-labels">
-            <div><span class="apt-badge">Centre-ville</span></div>
-            <div><span class="apt-badge-addr">1935 Rue Tupper</span></div>
-          </div>
         </div>
 
         <div class="apt-right">
@@ -112,10 +108,7 @@
     </div>
   </section>
 
-  <!-- ── Schools Marquee ── -->
-  <div class="schools-marquee">
-    <div class="schools-track" id="schools-track"></div>
-  </div>
+
 
   <!-- ── Feature Strips ── -->
   <section class="strip" style="background:#1c3828; z-index:10;">
@@ -141,7 +134,7 @@
       <div class="strip-text">
         <h2 class="strip-title" style="color:#1c3828;">Un quartier central et vivant</h2>
         <div class="strip-body-wrap">
-          <p class="strip-body" style="color:rgba(28,56,40,.7);">Le secteur Shaughnessy Village est reconnu pour sa vie de quartier et sa proximité avec Concordia, Dawson, LaSalle et McGill. À distance de marche du métro Atwater et Georges-Vanier, tout est accessible à pied.</p>
+          <p class="strip-body" style="color:rgba(28,56,40,.7);">Notre secteur est reconnu pour sa vie de quartier et sa proximité avec Concordia, Dawson, LaSalle et McGill. À distance de marche du métro Atwater et Georges-Vanier, tout est accessible à pied.</p>
           <a href="/le-quartier" class="strip-cta" style="color:#1c3828;">
             Découvrir le quartier
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M8 3l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -169,6 +162,46 @@
       <div class="strip-img-wrap">
         <img class="strip-img" src="https://images.pexels.com/photos/5662646/pexels-photo-5662646.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Balcon avec vue sur la ville" />
       </div>
+    </div>
+  </section>
+
+  <!-- ── Showcase ── -->
+  <section class="showcase-section" id="galerie">
+    <div class="showcase-inner">
+
+      <div class="showcase-img-col">
+        <div class="showcase-main-img-wrap">
+          <img class="showcase-main-img" id="showcase-main"
+               src="https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1400"
+               alt="Appartement Les Immeubles QC">
+        </div>
+      </div>
+
+      <div class="showcase-content-col">
+        <div class="showcase-text">
+          <h2 class="showcase-heading">Des appartements<br>pensés pour vous</h2>
+          <p class="showcase-body">Visualisez votre quotidien dans un appartement baigné de lumière, où chaque détail simplifie la vie. Nos logements rénovés au centre-ville de Montréal sont conçus pour rendre la vie étudiante aussi confortable que pratique.</p>
+        </div>
+        <div class="showcase-nav">
+          <div class="showcase-thumbs">
+            <button class="showcase-thumb active" onclick="showcaseGo(0)"><img src="https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=200" alt=""></button>
+            <button class="showcase-thumb" onclick="showcaseGo(1)"><img src="https://images.pexels.com/photos/2724749/pexels-photo-2724749.jpeg?auto=compress&cs=tinysrgb&w=200" alt=""></button>
+            <button class="showcase-thumb" onclick="showcaseGo(2)"><img src="https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg?auto=compress&cs=tinysrgb&w=200" alt=""></button>
+            <button class="showcase-thumb" onclick="showcaseGo(3)"><img src="https://images.pexels.com/photos/1457842/pexels-photo-1457842.jpeg?auto=compress&cs=tinysrgb&w=200" alt=""></button>
+            <button class="showcase-thumb" onclick="showcaseGo(4)"><img src="https://images.pexels.com/photos/2062426/pexels-photo-2062426.jpeg?auto=compress&cs=tinysrgb&w=200" alt=""></button>
+            <button class="showcase-thumb" onclick="showcaseGo(5)"><img src="https://images.pexels.com/photos/1080721/pexels-photo-1080721.jpeg?auto=compress&cs=tinysrgb&w=200" alt=""></button>
+          </div>
+          <div class="showcase-arrows">
+            <button class="showcase-arrow" onclick="showcaseGo(showcaseIdx - 1)" aria-label="Précédent">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M13 4l-6 6 6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <button class="showcase-arrow" onclick="showcaseGo(showcaseIdx + 1)" aria-label="Suivant">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 4l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -212,6 +245,31 @@
     </div>
   </section>
 
+  <!-- ── POI Pills ── -->
+  <section class="poi-section">
+    <div class="poi-inner">
+
+      <div class="poi-pills-col">
+        <span class="poi-eyebrow">À proximité</span>
+        <div class="poi-canvas" id="poi-canvas">
+          <span class="poi-pill" data-rot="-4">Université Concordia</span>
+          <span class="poi-pill" data-rot="3">Collège Dawson</span>
+          <span class="poi-pill" data-rot="-6">Collège LaSalle</span>
+          <span class="poi-pill" data-rot="2">Université McGill</span>
+          <span class="poi-pill" data-rot="-3">Métro Atwater</span>
+          <span class="poi-pill" data-rot="5">Métro Georges-Vanier</span>
+          <span class="poi-pill" data-rot="-2">Rue Sainte-Catherine</span>
+          <span class="poi-pill" data-rot="4">Commerces, restaurants et services essentiels</span>
+        </div>
+      </div>
+
+      <div class="poi-img-col">
+        <img class="poi-img" src="https://images.pexels.com/photos/5745867/pexels-photo-5745867.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Quartier centre-ville Montréal">
+      </div>
+
+    </div>
+  </section>
+
   <!-- ── FAQ ── -->
   <section class="faq-section" id="faq">
     <div class="faq-inner">
@@ -227,7 +285,7 @@
             <span>Où sont situés vos appartements ?</span>
             <svg class="faq-chev" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7l5 5 5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
-          <div class="faq-a"><p>Nos appartements sont situés au 1935 Rue Tupper, dans le secteur Shaughnessy Village au centre-ville de Montréal — à distance de marche du métro Atwater et Georges-Vanier, et à proximité de Concordia, Dawson, LaSalle et McGill.</p></div>
+          <div class="faq-a"><p>Nos appartements sont situés au 1935 Rue Tupper, au centre-ville de Montréal — à distance de marche du métro Atwater et Georges-Vanier, et à proximité de Concordia, Dawson, LaSalle et McGill.</p></div>
         </div>
 
         <div class="faq-item">
@@ -274,6 +332,34 @@
       </div>
     </div>
   </section>
+
+  <!-- ── Map ── -->
+  <div class="map-section">
+    <div class="map-inner">
+
+      <div class="map-left">
+        <span class="map-eyebrow">Notre emplacement</span>
+        <h2 class="map-heading">Au cœur de<br>Montréal</h2>
+        <p class="map-body">Situés au 1935 Rue Tupper au centre-ville de Montréal, nos appartements sont à distance de marche du métro Atwater et Georges-Vanier, et à quelques minutes des campus de Concordia, Dawson, LaSalle et McGill.</p>
+        <div class="map-address">
+          <p class="map-address-line">1935 Rue Tupper</p>
+          <p class="map-address-line">Montréal (Québec) H3H 1N6</p>
+          <a href="tel:5149080303" class="map-phone">514 908-0303</a>
+        </div>
+      </div>
+
+      <div class="map-right">
+        <iframe
+          class="map-iframe"
+          src="https://www.openstreetmap.org/export/embed.html?bbox=-73.5906%2C45.4917%2C-73.5706%2C45.4977&layer=mapnik&marker=45.4947%2C-73.5806"
+          loading="lazy"
+          title="1935 Rue Tupper, Montréal">
+        </iframe>
+        <div class="map-overlay"></div>
+      </div>
+
+    </div>
+  </div>
 
   <!-- ── Footer ── -->
   <footer class="footer-section" id="footer">

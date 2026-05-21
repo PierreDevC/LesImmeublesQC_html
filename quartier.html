@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Le quartier — Les Immeubles QC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ── Quartier-specific styles ── */
+    .q-hero {
+      position: relative;
+      overflow: hidden;
+      height: 520px;
+      background: var(--forest);
+    }
+    @media (max-width: 767px) { .q-hero { height: 360px; } }
+    .q-hero-img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      opacity: .55;
+    }
+    .q-hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(160deg, rgba(0,31,91,.55) 0%, rgba(28,56,40,.4) 100%);
+    }
+    .q-hero-text {
+      position: absolute; bottom: 48px; left: 64px; right: 64px;
+    }
+    @media (max-width: 767px) { .q-hero-text { bottom: 28px; left: 24px; right: 24px; } }
+    .q-hero-eyebrow {
+      font-size: .75rem; font-weight: 600; letter-spacing: .18em;
+      text-transform: uppercase; color: rgba(255,255,255,.7);
+      font-family: var(--font); margin-bottom: 12px; display: block;
+    }
+    .q-hero-title {
+      font-family: var(--font); font-weight: 800;
+      font-size: clamp(2.25rem, 5vw, 4rem);
+      color: white; line-height: 1.1; letter-spacing: -.02em;
+    }
+
+    .q-intro {
+      background: var(--cream);
+      padding: 96px 64px;
+    }
+    @media (max-width: 1023px) { .q-intro { padding: 72px 32px; } }
+    @media (max-width: 767px)  { .q-intro { padding: 56px 20px; } }
+    .q-intro-inner {
+      max-width: 1280px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr;
+      gap: 48px; align-items: start;
+    }
+    @media (min-width: 1024px) { .q-intro-inner { grid-template-columns: 1fr 1fr; gap: 80px; } }
+    .q-intro-eyebrow {
+      font-size: .75rem; font-weight: 600; letter-spacing: .14em;
+      text-transform: uppercase; color: rgba(28,56,40,.5);
+      font-family: var(--font); margin-bottom: 16px; display: block;
+    }
+    .q-intro-title {
+      font-family: var(--font); font-weight: 800;
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--forest); line-height: 1.1;
+      letter-spacing: -.02em; margin-bottom: 24px;
+    }
+    .q-intro-body {
+      font-size: 1rem; color: rgba(28,56,40,.75);
+      line-height: 1.75; margin-bottom: 0;
+    }
+    .q-intro-body + .q-intro-body { margin-top: 16px; }
+
+    .q-poi-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      align-self: start;
+    }
+    @media (max-width: 767px) { .q-poi-grid { grid-template-columns: 1fr; } }
+
+    .q-poi-card {
+      background: white;
+      border-radius: 18px;
+      padding: 24px 22px;
+      display: flex; flex-direction: column; gap: 8px;
+    }
+    .q-poi-icon {
+      width: 40px; height: 40px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; margin-bottom: 4px;
+    }
+    .q-poi-icon svg { display: block; }
+    .q-poi-label {
+      font-size: .7rem; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; color: rgba(28,56,40,.45);
+      font-family: var(--font);
+    }
+    .q-poi-name {
+      font-family: var(--font); font-weight: 700;
+      font-size: 1rem; color: var(--forest); line-height: 1.2;
+    }
+    .q-poi-dist {
+      font-size: .8rem; color: rgba(28,56,40,.55);
+    }
+
+    .q-strip {
+      background: var(--navy);
+      padding: 80px 64px;
+    }
+    @media (max-width: 1023px) { .q-strip { padding: 64px 32px; } }
+    @media (max-width: 767px)  { .q-strip { padding: 48px 20px; } }
+    .q-strip-inner {
+      max-width: 1280px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr;
+      gap: 40px; align-items: center;
+    }
+    @media (min-width: 1024px) { .q-strip-inner { grid-template-columns: 1fr 1fr; gap: 72px; } }
+    .q-strip-title {
+      font-family: var(--font); font-weight: 800;
+      font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+      color: white; line-height: 1.15; letter-spacing: -.02em;
+      margin-bottom: 20px;
+    }
+    .q-strip-body {
+      font-size: .9375rem; color: rgba(255,255,255,.65);
+      line-height: 1.7; margin-bottom: 28px;
+    }
+    .q-strip-cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 24px; background: white; color: var(--navy);
+      font-size: .875rem; font-weight: 700; border-radius: 12px;
+      font-family: var(--font); transition: background .2s, transform .15s;
+    }
+    .q-strip-cta:hover { background: #dbeafe; }
+    .q-strip-cta:active { transform: scale(.95); }
+    .q-strip-img-wrap {
+      border-radius: 18px; overflow: hidden;
+      height: 360px; flex-shrink: 0;
+    }
+    @media (max-width: 767px) { .q-strip-img-wrap { height: 220px; } }
+    .q-strip-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  </style>
+</head>
+<body>
+
+  <!-- ── Marquee Banner ── -->
+  <div class="marquee-banner">
+    <div class="marquee-track" id="marquee-track"></div>
+  </div>
+
+  <!-- ── Navbar ── -->
+  <div class="navbar-wrap" id="navbar">
+    <div class="navbar-card">
+      <div class="navbar-top">
+        <a href="index.html" class="logo">
+          <svg class="logo-svg" width="32" height="28" viewBox="0 0 32 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="0" y="0" width="15" height="28" fill="white" opacity="0.5"/>
+            <rect x="10" y="5" width="22" height="23" fill="white"/>
+          </svg>
+          <div class="logo-text">
+            <span class="logo-sub">Les Immeubles</span>
+            <span class="logo-main">QC</span>
+          </div>
+        </a>
+        <nav class="nav-links" id="nav-links"></nav>
+        <a href="index.html#footer" class="nav-cta">Planifier une visite</a>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+      <div class="dropdown-panel" id="dropdown-panel">
+        <div class="dropdown-inner" id="dropdown-inner"></div>
+      </div>
+    </div>
+    <div class="mobile-menu" id="mobile-menu">
+      <div class="mobile-menu-inner" id="mobile-menu-inner"></div>
+    </div>
+  </div>
+
+  <!-- ── Hero ── -->
+  <div class="q-hero">
+    <img class="q-hero-img" src="https://images.pexels.com/photos/5745867/pexels-photo-5745867.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="Rue résidentielle de Montréal" />
+    <div class="q-hero-overlay"></div>
+    <div class="q-hero-text">
+      <span class="q-hero-eyebrow">Centre-Ville · Montréal</span>
+      <h1 class="q-hero-title">Un quartier central,<br>vivant et pratique</h1>
+    </div>
+  </div>
+
+  <!-- ── Intro + POI ── -->
+  <section class="q-intro">
+    <div class="q-intro-inner">
+
+      <div>
+        <span class="q-intro-eyebrow">Le quartier</span>
+        <h2 class="q-intro-title">Tout à distance<br>de marche</h2>
+        <p class="q-intro-body">Le secteur est reconnu pour sa vie de quartier, sa proximité avec plusieurs établissements d'enseignement et son accès rapide aux transports en commun.</p>
+        <p class="q-intro-body" style="margin-top:16px;">Pour un étudiant, c'est un environnement particulièrement pratique. Les déplacements sont simples, les services sont nombreux et le quartier permet de profiter pleinement de Montréal sans dépendre d'une voiture.</p>
+      </div>
+
+      <div class="q-poi-grid">
+
+        <div class="q-poi-card">
+          <div class="q-poi-icon" style="background:#dbeafe;">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#001f5b" stroke-width="1.8"><path d="M10 2L2 7v11h5v-5h6v5h5V7L10 2z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <span class="q-poi-label">Université</span>
+          <span class="q-poi-name">Concordia</span>
+          <span class="q-poi-dist">À distance de marche</span>
+        </div>
+
+        <div class="q-poi-card">
+          <div class="q-poi-icon" style="background:#dbeafe;">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#001f5b" stroke-width="1.8"><path d="M10 2L2 7v11h5v-5h6v5h5V7L10 2z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <span class="q-poi-label">Université</span>
+          <span class="q-poi-name">McGill</span>
+          <span class="q-poi-dist">À distance de marche</span>
+        </div>
+
+        <div class="q-poi-card">
+          <div class="q-poi-icon" style="background:#dcfce7;">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#1c3828" stroke-width="1.8"><path d="M10 2L2 7v11h5v-5h6v5h5V7L10 2z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <span class="q-poi-label">Cégep</span>
+          <span class="q-poi-name">Dawson</span>
+          <span class="q-poi-dist">À distance de marche</span>
+        </div>
+
+        <div class="q-poi-card">
+          <div class="q-poi-icon" style="background:#dcfce7;">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#1c3828" stroke-width="1.8"><path d="M10 2L2 7v11h5v-5h6v5h5V7L10 2z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <span class="q-poi-label">Cégep</span>
+          <span class="q-poi-name">LaSalle</span>
+          <span class="q-poi-dist">À distance de marche</span>
+        </div>
+
+        <div class="q-poi-card">
+          <div class="q-poi-icon" style="background:#fef9c3;">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#92400e" stroke-width="1.8"><circle cx="10" cy="10" r="3"/><path d="M10 2v2M10 16v2M2 10h2M16 10h2" stroke-linecap="round"/></svg>
+          </div>
+          <span class="q-poi-label">Métro</span>
+          <span class="q-poi-name">Atwater</span>
+          <span class="q-poi-dist">À distance de marche</span>
+        </div>
+
+        <div class="q-poi-card">
+          <div class="q-poi-icon" style="background:#fef9c3;">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#92400e" stroke-width="1.8"><circle cx="10" cy="10" r="3"/><path d="M10 2v2M10 16v2M2 10h2M16 10h2" stroke-linecap="round"/></svg>
+          </div>
+          <span class="q-poi-label">Métro</span>
+          <span class="q-poi-name">Georges-Vanier</span>
+          <span class="q-poi-dist">À distance de marche</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Strip ── -->
+  <div class="q-strip">
+    <div class="q-strip-inner">
+      <div>
+        <h2 class="q-strip-title">Rue Sainte-Catherine et tous les services à portée de main</h2>
+        <p class="q-strip-body">Cafés, épiceries, restaurants, pharmacies, parcs — tout ce dont vous avez besoin au quotidien est à quelques minutes à pied. Vivre au centre-ville de Montréal, c'est gagner du temps chaque jour.</p>
+        <a href="index.html#footer" class="q-strip-cta">
+          Planifier une visite
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M8 3l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+      <div class="q-strip-img-wrap">
+        <img class="q-strip-img" src="https://images.pexels.com/photos/4144100/pexels-photo-4144100.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Vie de quartier à Montréal" />
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Map ── -->
+  <div class="map-section">
+    <div class="map-inner">
+      <div class="map-left">
+        <span class="map-eyebrow">Notre emplacement</span>
+        <h2 class="map-heading">Au cœur de<br>Montréal</h2>
+        <p class="map-body">Situés au 1935 Rue Tupper au centre-ville de Montréal, nos appartements sont à distance de marche du métro Atwater et Georges-Vanier, et à quelques minutes des campus de Concordia, Dawson, LaSalle et McGill.</p>
+        <div class="map-address">
+          <p class="map-address-line">1935 Rue Tupper</p>
+          <p class="map-address-line">Montréal (Québec) H3H 1N6</p>
+          <a href="tel:5149080303" class="map-phone">514 908-0303</a>
+        </div>
+      </div>
+      <div class="map-right">
+        <iframe
+          class="map-iframe"
+          src="https://www.openstreetmap.org/export/embed.html?bbox=-73.5906%2C45.4917%2C-73.5706%2C45.4977&layer=mapnik&marker=45.4947%2C-73.5806"
+          loading="lazy"
+          title="1935 Rue Tupper, Montréal">
+        </iframe>
+        <div class="map-overlay"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Footer ── -->
+  <footer class="footer-section" id="footer">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <h2 class="footer-heading">Trouvez vôtre<br>appartement<br>dès maintenant</h2>
+        <p class="footer-desc">Vous cherchez une location d'appartements pour étudiants à Montréal ? Contactez Les Immeubles QC pour connaître les disponibilités, poser vos questions ou planifier une visite au 1935 Rue Tupper. Vous pouvez nous joindre au 514 908-0303 ou nous envoyer un courriel via le formulaire de contact en ligne.</p>
+        <div class="footer-info-blocks">
+          <div class="footer-info-block">
+            <p class="footer-info-label">Adresse</p>
+            <p class="footer-info-val">1935 Rue Tupper<br>Montréal (Québec) H3H 1N6</p>
+          </div>
+          <div class="footer-info-block">
+            <p class="footer-info-label">Heures d'ouverture</p>
+            <p class="footer-info-val">Lundi au dimanche : 9h à 17h</p>
+          </div>
+          <div class="footer-info-block">
+            <a href="tel:5149080303" class="footer-phone">T 514 908-0303</a>
+            <a href="mailto:lesimmeublesqc@gmail.com" class="footer-email">lesimmeublesqc@gmail.com</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-right">
+        <h3 class="footer-form-heading">Planifiez une visite</h3>
+        <form class="footer-form" id="footer-form">
+          <input class="footer-input" type="text" placeholder="NOM COMPLET*" required />
+          <input class="footer-input" type="email" placeholder="COURRIEL*" required />
+          <input class="footer-input" type="tel" placeholder="TÉLÉPHONE*" required />
+          <label class="footer-checkbox-label">
+            <input class="footer-checkbox" type="checkbox" required />
+            <span>J'accepte d'être contacté par Les Immeubles QC concernant ma demande de visite.</span>
+          </label>
+          <button class="footer-submit" type="submit">Envoyer</button>
+          <p class="footer-success" id="footer-success">Merci ! Nous vous contacterons sous peu.</p>
+        </form>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Les Immeubles QC Inc. Tous droits réservés.</p>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
