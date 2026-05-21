@@ -1,6 +1,7 @@
 // ── Nav data ──
 const navItems = [
-  { label: "Accueil", href: "/" },
+  { label: "Accueil", href: "index.html" },
+  { label: "Locations d'appartements", href: "/locations" },
   { label: "Le projet", children: [
     { label: "La vision", href: "/projet/vision" },
     { label: "Le modèle", href: "/projet/modele" },
@@ -12,16 +13,15 @@ const navItems = [
     { label: "Les parcs", href: "/quartier/parcs" },
     { label: "La vie de quartier", href: "/quartier/vie" },
   ]},
-  { label: "FAQ", href: "/faq" },
+  { label: "FAQ", href: "#faq" },
   { label: "Galerie", href: "/galerie" },
-  { label: "Locations d'appartements", href: "/locations" },
   { label: "À propos", children: [
     { label: "L'entreprise", href: "/a-propos/entreprise" },
     { label: "Notre histoire", href: "/a-propos/histoire" },
     { label: "Notre équipe", href: "/a-propos/equipe" },
     { label: "Nos partenaires", href: "/a-propos/partenaires" },
   ]},
-  { label: "Contact", href: "/contact" },
+  { label: "Contact", href: "#footer" },
 ];
 
 // ── Marquee ──
@@ -32,6 +32,15 @@ const navItems = [
     `<span class="marquee-item">${text}</span>`
   ).join('');
   track.innerHTML = html + html;
+})();
+
+// ── Schools marquee ──
+(function () {
+  const track = document.getElementById('schools-track');
+  const schools = ['Concordia', 'Dawson', 'LaSalle', 'McGill'];
+  const items = Array(8).fill(schools).flat()
+    .map(s => `<span class="schools-item">${s}</span>`).join('');
+  track.innerHTML = items + items;
 })();
 
 // ── Desktop nav ──
@@ -184,35 +193,15 @@ window.addEventListener('scroll', () => {
 
 // ── Apartment table ──
 const units = [
-  { unite: "101", superficie: 345, chambres: "Studio",     sallesDeBain: 1, prix: 925  },
-  { unite: "102", superficie: 370, chambres: "Studio",     sallesDeBain: 1, prix: 950  },
-  { unite: "201", superficie: 345, chambres: "Studio",     sallesDeBain: 1, prix: 935  },
-  { unite: "202", superficie: 370, chambres: "Studio",     sallesDeBain: 1, prix: 960  },
-  { unite: "301", superficie: 345, chambres: "Studio",     sallesDeBain: 1, prix: 945  },
-  { unite: "302", superficie: 415, chambres: "Studio",     sallesDeBain: 1, prix: 1000 },
-  { unite: "103", superficie: 520, chambres: "1 chambre",  sallesDeBain: 1, prix: 1175 },
-  { unite: "203", superficie: 540, chambres: "1 chambre",  sallesDeBain: 1, prix: 1225 },
-  { unite: "303", superficie: 565, chambres: "1 chambre",  sallesDeBain: 1, prix: 1275 },
-  { unite: "403", superficie: 590, chambres: "1 chambre",  sallesDeBain: 1, prix: 1325 },
-  { unite: "104", superficie: 740, chambres: "2 chambres", sallesDeBain: 1, prix: 1525 },
-  { unite: "204", superficie: 780, chambres: "2 chambres", sallesDeBain: 2, prix: 1625 },
-  { unite: "304", superficie: 810, chambres: "2 chambres", sallesDeBain: 2, prix: 1725 },
-  { unite: "105", superficie: 960, chambres: "3 chambres", sallesDeBain: 2, prix: 2050 },
-  { unite: "205", superficie: 995, chambres: "3 chambres", sallesDeBain: 2, prix: 2150 },
+  { unite: "16", superficie: 400, chambres: "1 chambre", sallesDeBain: 1, prix: 1558, occupation: "Immédiate", statut: "Disponible" },
+  { unite: "17", superficie: 500, chambres: "1 chambre", sallesDeBain: 1, prix: 1375, occupation: "Immédiate", statut: "Disponible" },
 ];
 
-let filterChambres = 'Toutes chambres';
-let filterSdb = 'Toutes';
 let sortKey = 'prix';
 let sortDir = 'asc';
 
 function renderTable() {
-  let data = units.filter(u => {
-    if (filterChambres !== 'Toutes chambres' && u.chambres !== filterChambres) return false;
-    if (filterSdb !== 'Toutes' && u.sallesDeBain !== Number(filterSdb)) return false;
-    return true;
-  });
-  data = [...data].sort((a, b) => {
+  let data = [...units].sort((a, b) => {
     const av = a[sortKey], bv = b[sortKey];
     if (typeof av === 'string') return sortDir === 'asc' ? av.localeCompare(bv, 'fr') : bv.localeCompare(av, 'fr');
     return sortDir === 'asc' ? av - bv : bv - av;
@@ -225,17 +214,20 @@ function renderTable() {
   if (data.length === 0) {
     tbody.innerHTML = `<tr class="empty-row"><td colspan="4">Aucun logement pour ces critères.</td></tr>`;
   } else {
+    const statutClass = { 'Disponible': 'statut-dispo', 'Loué': 'statut-loue', 'Réservé': 'statut-reserve' };
     tbody.innerHTML = data.map(u => `
       <tr>
         <td class="td-unit">${u.unite}</td>
         <td>${u.superficie} pi²</td>
         <td>${u.chambres}</td>
         <td class="td-price">${u.prix.toLocaleString('fr-CA')} $/mois</td>
+        <td>${u.occupation}</td>
+        <td><span class="statut-badge ${statutClass[u.statut] || ''}">${u.statut}</span></td>
       </tr>
     `).join('');
   }
 
-  ['unite', 'superficie', 'chambres', 'prix'].forEach(k => {
+  ['unite', 'superficie', 'chambres', 'prix', 'occupation', 'statut'].forEach(k => {
     document.getElementById(`th-${k}`).classList.toggle('sort-active', k === sortKey);
     const sa = document.getElementById(`sa-${k}`);
     sa.classList.toggle('active', k === sortKey);
@@ -249,36 +241,6 @@ function sortTable(key) {
   renderTable();
 }
 
-function toggleDropdown(id) {
-  const menu = document.getElementById(`${id}-menu`);
-  const chev = document.getElementById(`${id}-chev`);
-  const isOpen = menu.classList.contains('open');
-  document.querySelectorAll('.dropdown-menu').forEach(m => m.classList.remove('open'));
-  document.querySelectorAll('.dropdown-chevron').forEach(c => c.classList.remove('open'));
-  if (!isOpen) { menu.classList.add('open'); chev.classList.add('open'); }
-}
-
-function selectFilter(id, val) {
-  document.getElementById(`${id}-val`).textContent = val;
-  document.getElementById(`${id}-menu`).querySelectorAll('.dropdown-option').forEach(o => {
-    o.classList.toggle('selected', o.textContent === val);
-  });
-  document.getElementById(`${id}-menu`).classList.remove('open');
-  document.getElementById(`${id}-chev`).classList.remove('open');
-  if (id === 'dd-chambres') filterChambres = val;
-  else filterSdb = val;
-  renderTable();
-}
-
-document.addEventListener('mousedown', e => {
-  document.querySelectorAll('.dropdown-wrap').forEach(wrap => {
-    if (!wrap.contains(e.target)) {
-      const id = wrap.id;
-      document.getElementById(`${id}-menu`).classList.remove('open');
-      document.getElementById(`${id}-chev`).classList.remove('open');
-    }
-  });
-});
 
 // ── FAQ accordion ──
 function toggleFaq(btn) {

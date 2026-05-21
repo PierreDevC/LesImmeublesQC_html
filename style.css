@@ -9,7 +9,7 @@
   --font: 'Bricolage Grotesque', Arial, sans-serif;
 }
 
-html { font-family: Arial, Helvetica, sans-serif; -webkit-font-smoothing: antialiased; }
+html { font-family: Arial, Helvetica, sans-serif; -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
 body { background: #fff; min-height: 100vh; }
 a { text-decoration: none; color: inherit; }
 button { background: none; border: none; cursor: pointer; font-family: inherit; }
@@ -43,7 +43,7 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
 .navbar-wrap {
   position: sticky;
   top: 0;
-  z-index: 50;
+  z-index: 100;
   padding: 12px 16px 8px;
   transition: padding 0.5s cubic-bezier(.25,.46,.45,.94);
 }
@@ -402,74 +402,6 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
 
 .apt-right { display: flex; flex-direction: column; gap: 10px; }
 
-/* Filter bar */
-.filter-bar {
-  background: white;
-  border-radius: 18px;
-  padding: 16px 24px;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-.filter-sep { width: 1px; height: 36px; background: var(--cream); flex-shrink: 0; }
-
-.dropdown-wrap { position: relative; flex: 1; min-width: 0; }
-.dropdown-trigger {
-  width: 100%;
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  cursor: pointer;
-  background: none;
-  border: none;
-}
-.dropdown-trigger-label {
-  font-size: .7rem;
-  color: #9ca3af;
-  font-weight: 500;
-  letter-spacing: .02em;
-}
-.dropdown-trigger-val {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  color: var(--forest);
-  font-weight: 600;
-  font-size: .95rem;
-  font-family: var(--font);
-}
-.dropdown-chevron { color: #9ca3af; transition: transform .2s; }
-.dropdown-chevron.open { transform: rotate(180deg); }
-
-.dropdown-menu {
-  position: absolute;
-  top: calc(100% + 8px);
-  left: 0;
-  background: white;
-  border: 1px solid var(--cream);
-  border-radius: 14px;
-  box-shadow: 0 8px 24px rgba(0,0,0,.1);
-  z-index: 100;
-  min-width: 180px;
-  padding: 6px 0;
-  display: none;
-}
-.dropdown-menu.open { display: block; }
-.dropdown-option {
-  width: 100%;
-  text-align: left;
-  padding: 10px 16px;
-  font-size: .9rem;
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: #6b7280;
-  font-family: var(--font);
-  transition: background .1s;
-}
-.dropdown-option:hover { background: #f9f7f4; }
-.dropdown-option.selected { color: var(--forest); font-weight: 600; }
 
 /* Table */
 .table-wrap {
@@ -516,6 +448,18 @@ td { padding: 14px 24px; font-size: .88rem; color: #6b7280; }
 td.td-unit { font-weight: 600; color: var(--forest); }
 td.td-price { font-weight: 700; color: #1a7a3c; }
 .empty-row td { padding: 48px 24px; text-align: center; font-size: .88rem; color: #9ca3af; }
+
+.statut-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  font-size: .78rem;
+  font-weight: 600;
+  font-family: var(--font);
+}
+.statut-dispo   { background: #dcfce7; color: #15803d; }
+.statut-loue    { background: #fee2e2; color: #b91c1c; }
+.statut-reserve { background: #fef9c3; color: #92400e; }
 
 /* ── Feature Strips ── */
 .strip {
@@ -620,6 +564,26 @@ td.td-price { font-weight: 700; color: #1a7a3c; }
   font-family: var(--font);
 }
 .intro-title-dim { color: rgba(0,31,91,.4); }
+
+.schools-marquee {
+  overflow: hidden;
+  padding: 18px 0;
+}
+.schools-track {
+  display: flex;
+  white-space: nowrap;
+  animation: marquee 22s linear infinite;
+}
+.schools-item {
+  font-family: var(--font);
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  font-weight: 700;
+  color: rgba(0,31,91,.22);
+  padding: 0 32px;
+  flex-shrink: 0;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
 .intro-divider { width: 64px; height: 1px; background: rgba(0,31,91,.3); }
 .intro-body {
   color: rgba(0,31,91,.7);
@@ -799,6 +763,13 @@ td.td-price { font-weight: 700; color: #1a7a3c; }
   margin-bottom: 48px;
 }
 
+.footer-desc {
+  font-size: .875rem;
+  color: rgba(255,255,255,.55);
+  line-height: 1.7;
+  margin-bottom: 40px;
+}
+
 .footer-info-blocks { display: flex; flex-direction: column; gap: 32px; }
 
 .footer-info-label {
@@ -963,8 +934,6 @@ td.td-price { font-weight: 700; color: #1a7a3c; }
   .apt-grid       { gap: 12px; }
   .apt-img-wrap   { height: 220px; border-radius: 16px; }
   .apt-img-labels { padding: 16px 20px; }
-  .filter-bar     { padding: 10px 14px; gap: 8px; }
-  .filter-sep     { height: 28px; }
   .table-wrap     { overflow-x: auto; }
   table           { min-width: 420px; }
   th              { padding: 10px 14px; font-size: .75rem; }

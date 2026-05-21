@@ -88,43 +88,6 @@
         </div>
 
         <div class="apt-right">
-          <div class="filter-bar">
-            <div class="dropdown-wrap" id="dd-chambres">
-              <button class="dropdown-trigger" onclick="toggleDropdown('dd-chambres')">
-                <span class="dropdown-trigger-label">Chambres</span>
-                <span class="dropdown-trigger-val">
-                  <span id="dd-chambres-val">Toutes chambres</span>
-                  <svg class="dropdown-chevron" id="dd-chambres-chev" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M3 5l4 4 4-4" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </span>
-              </button>
-              <div class="dropdown-menu" id="dd-chambres-menu">
-                <button class="dropdown-option selected" onclick="selectFilter('dd-chambres','Toutes chambres')">Toutes chambres</button>
-                <button class="dropdown-option" onclick="selectFilter('dd-chambres','Studio')">Studio</button>
-                <button class="dropdown-option" onclick="selectFilter('dd-chambres','1 chambre')">1 chambre</button>
-                <button class="dropdown-option" onclick="selectFilter('dd-chambres','2 chambres')">2 chambres</button>
-                <button class="dropdown-option" onclick="selectFilter('dd-chambres','3 chambres')">3 chambres</button>
-              </div>
-            </div>
-            <div class="filter-sep"></div>
-            <div class="dropdown-wrap" id="dd-sdb">
-              <button class="dropdown-trigger" onclick="toggleDropdown('dd-sdb')">
-                <span class="dropdown-trigger-label">Salles de Bain</span>
-                <span class="dropdown-trigger-val">
-                  <span id="dd-sdb-val">Toutes</span>
-                  <svg class="dropdown-chevron" id="dd-sdb-chev" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M3 5l4 4 4-4" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </span>
-              </button>
-              <div class="dropdown-menu" id="dd-sdb-menu">
-                <button class="dropdown-option selected" onclick="selectFilter('dd-sdb','Toutes')">Toutes</button>
-                <button class="dropdown-option" onclick="selectFilter('dd-sdb','1')">1</button>
-                <button class="dropdown-option" onclick="selectFilter('dd-sdb','2')">2</button>
-              </div>
-            </div>
-          </div>
 
           <div class="table-wrap">
             <div class="table-count" id="table-count"></div>
@@ -136,6 +99,8 @@
                     <th onclick="sortTable('superficie')" id="th-superficie">Superficie <svg class="sort-arrow" id="sa-superficie" width="10" height="12" viewBox="0 0 10 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 1v10M1 7l4 4 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg></th>
                     <th onclick="sortTable('chambres')" id="th-chambres">Chambres <svg class="sort-arrow" id="sa-chambres" width="10" height="12" viewBox="0 0 10 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 1v10M1 7l4 4 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg></th>
                     <th onclick="sortTable('prix')" id="th-prix">Prix <svg class="sort-arrow" id="sa-prix" width="10" height="12" viewBox="0 0 10 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 1v10M1 7l4 4 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg></th>
+                    <th onclick="sortTable('occupation')" id="th-occupation">Occupation <svg class="sort-arrow" id="sa-occupation" width="10" height="12" viewBox="0 0 10 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 1v10M1 7l4 4 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg></th>
+                    <th onclick="sortTable('statut')" id="th-statut">Statut <svg class="sort-arrow" id="sa-statut" width="10" height="12" viewBox="0 0 10 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 1v10M1 7l4 4 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg></th>
                   </tr>
                 </thead>
                 <tbody id="apt-tbody"></tbody>
@@ -146,6 +111,11 @@
       </div>
     </div>
   </section>
+
+  <!-- ── Schools Marquee ── -->
+  <div class="schools-marquee">
+    <div class="schools-track" id="schools-track"></div>
+  </div>
 
   <!-- ── Feature Strips ── -->
   <section class="strip" style="background:#1c3828; z-index:10;">
@@ -243,12 +213,11 @@
   </section>
 
   <!-- ── FAQ ── -->
-  <section class="faq-section">
+  <section class="faq-section" id="faq">
     <div class="faq-inner">
 
       <div class="faq-left">
         <h2 class="faq-heading">Vos questions,<br>nos réponses</h2>
-        <a href="/foire-aux-questions" class="faq-cta">Voir toutes les questions</a>
       </div>
 
       <div class="faq-right">
@@ -266,7 +235,7 @@
             <span>Quels types de logements proposez-vous ?</span>
             <svg class="faq-chev" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7l5 5 5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
-          <div class="faq-a"><p>Nous offrons des studios, des appartements 1, 2 et 3 chambres, à partir de 925 $ par mois. Chaque logement est conçu pour répondre aux besoins concrets des étudiants qui souhaitent vivre au centre-ville.</p></div>
+          <div class="faq-a"><p>Nous offrons des appartements 1 chambre récemment rénovés, à partir de 1 375 $ par mois, avec des superficies entre 400 et 500 pi². Chaque logement est conçu pour répondre aux besoins concrets des étudiants qui souhaitent vivre au centre-ville.</p></div>
         </div>
 
         <div class="faq-item">
@@ -293,13 +262,6 @@
           <div class="faq-a"><p>Nos logements sont conçus et optimisés pour la vie étudiante. Nous travaillons principalement avec des locataires qui étudient à Concordia, Dawson, LaSalle, McGill et dans d'autres établissements du centre-ville de Montréal.</p></div>
         </div>
 
-        <div class="faq-item">
-          <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
-            <span>Avez-vous des logements dans d'autres secteurs de Montréal ?</span>
-            <svg class="faq-chev" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7l5 5 5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-          <div class="faq-a"><p>Oui, en plus du Centre-Ville, Les Immeubles QC dispose de logements dans plusieurs quartiers : Anjou, Hochelaga, Tétreauville et Saint-Léonard. Contactez-nous pour connaître les disponibilités dans ces secteurs.</p></div>
-        </div>
 
         <div class="faq-item">
           <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
@@ -319,6 +281,7 @@
 
       <div class="footer-left">
         <h2 class="footer-heading">Trouvez vôtre<br>appartement<br>dès maintenant</h2>
+        <p class="footer-desc">Vous cherchez une location d'appartements pour étudiants à Montréal ? Contactez Les Immeubles QC pour connaître les disponibilités, poser vos questions ou planifier une visite au 1935 Rue Tupper. Vous pouvez nous joindre au 514 908-0303 ou nous envoyer un courriel via le formulaire de contact en ligne.</p>
         <div class="footer-info-blocks">
 
           <div class="footer-info-block">
