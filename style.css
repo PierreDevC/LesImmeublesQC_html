@@ -327,6 +327,7 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
   position: relative;
   z-index: 50;
   padding: 64px 24px;
+  overflow-x: hidden;
 }
 @media (min-width: 1024px) { .apt-section { padding: 96px 64px; } }
 
@@ -355,7 +356,10 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
   grid-template-columns: 1fr;
   gap: 20px;
   align-items: start;
+  overflow: hidden;
+  min-width: 0;
 }
+.apt-grid > * { min-width: 0; }
 @media (min-width: 1024px) { .apt-grid { grid-template-columns: 1fr 1fr; } }
 
 .apt-img-wrap {
@@ -363,6 +367,8 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
   border-radius: 24px;
   overflow: hidden;
   height: 600px;
+  width: 100%;
+  min-width: 0;
 }
 @media (min-width: 1024px) { .apt-img-wrap { position: sticky; top: 32px; } }
 
@@ -1222,7 +1228,8 @@ td.td-price { font-weight: 700; color: #1a7a3c; }
   .apt-section    { padding: 48px 16px; }
   .apt-heading    { margin-bottom: 24px; }
   .apt-grid       { gap: 12px; }
-  .apt-img-wrap   { height: 200px; border-radius: 16px; }
+  .apt-img-wrap   { height: auto; aspect-ratio: 4/3; width: 100%; max-width: 100%; border-radius: 16px; overflow: hidden; }
+  .apt-img        { width: 100%; max-width: 100%; display: block; }
   .apt-img-labels { padding: 16px 20px; }
   .table-wrap     { overflow-x: auto; -webkit-overflow-scrolling: touch; }
   table           { min-width: 620px; }

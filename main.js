@@ -207,6 +207,21 @@ window.addEventListener('scroll', () => {
 
 // ── Apartment table ──
 const units = [
+  { unite: "1",  superficie: 420, chambres: "1 chambre", sallesDeBain: 1, prix: 1400, occupation: "—", statut: "Occupé" },
+  { unite: "2",  superficie: 390, chambres: "1 chambre", sallesDeBain: 1, prix: 1350, occupation: "—", statut: "Occupé" },
+  { unite: "3",  superficie: 450, chambres: "1 chambre", sallesDeBain: 1, prix: 1425, occupation: "—", statut: "Occupé" },
+  { unite: "4",  superficie: 410, chambres: "1 chambre", sallesDeBain: 1, prix: 1380, occupation: "—", statut: "Occupé" },
+  { unite: "5",  superficie: 480, chambres: "1 chambre", sallesDeBain: 1, prix: 1450, occupation: "—", statut: "Occupé" },
+  { unite: "6",  superficie: 400, chambres: "1 chambre", sallesDeBain: 1, prix: 1360, occupation: "—", statut: "Occupé" },
+  { unite: "7",  superficie: 430, chambres: "1 chambre", sallesDeBain: 1, prix: 1410, occupation: "—", statut: "Occupé" },
+  { unite: "8",  superficie: 460, chambres: "1 chambre", sallesDeBain: 1, prix: 1440, occupation: "—", statut: "Occupé" },
+  { unite: "9",  superficie: 395, chambres: "1 chambre", sallesDeBain: 1, prix: 1355, occupation: "—", statut: "Occupé" },
+  { unite: "10", superficie: 470, chambres: "1 chambre", sallesDeBain: 1, prix: 1460, occupation: "—", statut: "Occupé" },
+  { unite: "11", superficie: 415, chambres: "1 chambre", sallesDeBain: 1, prix: 1390, occupation: "—", statut: "Occupé" },
+  { unite: "12", superficie: 440, chambres: "1 chambre", sallesDeBain: 1, prix: 1420, occupation: "—", statut: "Occupé" },
+  { unite: "13", superficie: 405, chambres: "1 chambre", sallesDeBain: 1, prix: 1370, occupation: "—", statut: "Occupé" },
+  { unite: "14", superficie: 490, chambres: "1 chambre", sallesDeBain: 1, prix: 1475, occupation: "—", statut: "Occupé" },
+  { unite: "15", superficie: 425, chambres: "1 chambre", sallesDeBain: 1, prix: 1395, occupation: "—", statut: "Occupé" },
   { unite: "16", superficie: 400, chambres: "1 chambre", sallesDeBain: 1, prix: 1558, occupation: "Immédiate", statut: "Disponible" },
   { unite: "17", superficie: 500, chambres: "1 chambre", sallesDeBain: 1, prix: 1375, occupation: "Immédiate", statut: "Disponible" },
 ];
@@ -217,6 +232,8 @@ let sortDir = 'asc';
 function renderTable() {
   if (!document.getElementById('apt-tbody')) return;
   let data = [...units].sort((a, b) => {
+    const dispo = (x) => x.statut === 'Disponible' ? 0 : 1;
+    if (dispo(a) !== dispo(b)) return dispo(a) - dispo(b);
     const av = a[sortKey], bv = b[sortKey];
     if (typeof av === 'string') return sortDir === 'asc' ? av.localeCompare(bv, 'fr') : bv.localeCompare(av, 'fr');
     return sortDir === 'asc' ? av - bv : bv - av;
@@ -236,7 +253,7 @@ function renderTable() {
         <td class="td-unit">${u.unite}</td>
         <td>${u.superficie} pi²</td>
         <td>${u.chambres}</td>
-        <td class="td-price">${u.prix.toLocaleString('fr-CA')} ${isMobile ? '$' : '$/mois'}</td>
+        <td class="td-price">${u.statut === 'Disponible' ? u.prix.toLocaleString('fr-CA') + (isMobile ? ' $' : ' $/mois') : '—'}</td>
         <td>${u.occupation}</td>
         <td><span class="statut-badge ${statutClass[u.statut] || ''}">${u.statut}</span></td>
       </tr>
