@@ -6,7 +6,7 @@ const navItems = [
   { label: "Le quartier", href: "quartier.html" },
   { label: "FAQ", href: "#faq" },
   { label: "Galerie", href: "#galerie" },
-  { label: "À propos", href: "/a-propos" },
+  { label: "À propos", href: "apropos.html" },
   { label: "Contact", href: "#footer" },
 ];
 
