@@ -260,12 +260,17 @@ function sortTable(key) {
 
 // ── Showcase Carousel ──
 const showcasePhotos = [
-  'https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1400',
-  'https://images.pexels.com/photos/2724749/pexels-photo-2724749.jpeg?auto=compress&cs=tinysrgb&w=1400',
-  'https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg?auto=compress&cs=tinysrgb&w=1400',
-  'https://images.pexels.com/photos/1457842/pexels-photo-1457842.jpeg?auto=compress&cs=tinysrgb&w=1400',
-  'https://images.pexels.com/photos/2062426/pexels-photo-2062426.jpeg?auto=compress&cs=tinysrgb&w=1400',
-  'https://images.pexels.com/photos/1080721/pexels-photo-1080721.jpeg?auto=compress&cs=tinysrgb&w=1400',
+  'assets/apt16/apt16_img0.jpeg',
+  'assets/apt16/apt16_img1.jpeg',
+  'assets/apt16/apt16_img2.jpeg',
+  'assets/apt16/apt16_img3.jpeg',
+  'assets/apt16/apt16_img4.jpeg',
+  'assets/apt16/apt16_img5.jpeg',
+  'assets/apt16/apt16_img6.jpeg',
+  'assets/apt16/apt16_img7.jpeg',
+  'assets/apt16/apt16_img8.jpeg',
+  'assets/apt16/apt16_img9.jpeg',
+  'assets/apt16/apt16_img10.jpeg',
 ];
 let showcaseIdx = 0;
 
