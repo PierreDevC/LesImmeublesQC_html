@@ -334,6 +334,12 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
 .apt-inner { max-width: 1280px; margin: 0 auto; }
 
 .apt-heading { margin-bottom: 40px; }
+.apt-desc {
+  color: rgba(28,56,40,.7);
+  font-size: 1rem;
+  line-height: 1.72;
+  margin-top: 16px;
+}
 .apt-eyebrow {
   font-size: 0.75rem;
   letter-spacing: .12em;
