@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Les Immeubles QC — Appartements étudiants à Montréal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ── Marquee Banner ── -->
+  <div class="marquee-banner">
+    <div class="marquee-track" id="marquee-track"></div>
+  </div>
+
+  <!-- ── Navbar ── -->
+  <div class="navbar-wrap" id="navbar">
+    <div class="navbar-card">
+
+      <div class="navbar-top">
+        <a href="/" class="logo">
+          <svg class="logo-svg" width="32" height="28" viewBox="0 0 32 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="0" y="0" width="15" height="28" fill="white" opacity="0.5"/>
+            <rect x="10" y="5" width="22" height="23" fill="white"/>
+          </svg>
+          <div class="logo-text">
+            <span class="logo-sub">Les Immeubles</span>
+            <span class="logo-main">QC</span>
+          </div>
+        </a>
+
+        <nav class="nav-links" id="nav-links"></nav>
+
+        <a href="/louer" class="nav-cta">Planifier une visite</a>
+
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+
+      <div class="dropdown-panel" id="dropdown-panel">
+        <div class="dropdown-inner" id="dropdown-inner"></div>
+      </div>
+
+      <div class="mobile-menu" id="mobile-menu">
+        <div class="mobile-menu-inner" id="mobile-menu-inner"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── Hero ── -->
+  <section class="hero-section">
+    <div class="hero-container" id="hero-container">
+      <video class="hero-video" autoplay muted loop playsinline src="assets/7683858-hd_1920_1080_30fps.mp4"></video>
+      <div style="position:absolute;inset:0;background:linear-gradient(135deg,#001f5b 0%,#1c3828 100%);z-index:-1;"></div>
+      <div class="hero-grad-tl"></div>
+      <div class="hero-grad-br"></div>
+      <div class="hero-text-tl">
+        <h1>Trouvez votre<br>appartement</h1>
+      </div>
+      <div class="hero-text-br">
+        <p>au coeur<br>de Montréal</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Apartment Table ── -->
+  <section class="apt-section">
+    <div class="apt-inner">
+      <div class="apt-heading">
+        <p class="apt-eyebrow">Logements disponibles</p>
+        <h2 class="apt-title">Trouvez votre appartement</h2>
+      </div>
+
+      <div class="apt-grid">
+        <div class="apt-img-wrap">
+          <img class="apt-img" src="https://images.pexels.com/photos/2404843/pexels-photo-2404843.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Appartements au centre-ville de Montréal" />
+          <div class="apt-img-overlay"></div>
+          <div class="apt-img-labels">
+            <div><span class="apt-badge">Centre-ville</span></div>
+            <div><span class="apt-badge-addr">1935 Rue Tupper</span></div>
+          </div>
+        </div>
+
+        <div class="apt-right">
+          <div class="filter-bar">
+            <div class="dropdown-wrap" id="dd-chambres">
+              <button class="dropdown-trigger" onclick="toggleDropdown('dd-chambres')">
+                <span class="dropdown-trigger-label">Chambres</span>
+                <span class="dropdown-trigger-val">
+                  <span id="dd-chambres-val">Toutes chambres</span>
+                  <svg class="dropdown-chevron" id="dd-chambres-chev" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 5l4 4 4-4" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+              </button>
+              <div class="dropdown-menu" id="dd-chambres-menu">
+                <button class="dropdown-option selected" onclick="selectFilter('dd-chambres','Toutes chambres')">Toutes chambres</button>
+                <button class="dropdown-option" onclick="selectFilter('dd-chambres','Studio')">Studio</button>
+                <button class="dropdown-option" onclick="selectFilter('dd-chambres','1 chambre')">1 chambre</button>
+                <button class="dropdown-option" onclick="selectFilter('dd-chambres','2 chambres')">2 chambres</button>
+                <button class="dropdown-option" onclick="selectFilter('dd-chambres','3 chambres')">3 chambres</button>
+              </div>
+            </div>
+            <div class="filter-sep"></div>
+            <div class="dropdown-wrap" id="dd-sdb">
+              <button class="dropdown-trigger" onclick="toggleDropdown('dd-sdb')">
+                <span class="dropdown-trigger-label">Salles de Bain</span>
+                <span class="dropdown-trigger-val">
+                  <span id="dd-sdb-val">Toutes</span>
+                  <svg class="dropdown-chevron" id="dd-sdb-chev" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 5l4 4 4-4" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+              </button>
+              <div class="dropdown-menu" id="dd-sdb-menu">
+                <button class="dropdown-option selected" onclick="selectFilter('dd-sdb','Toutes')">Toutes</button>
+                <button class="dropdown-option" onclick="selectFilter('dd-sdb','1')">1</button>
+                <button class="dropdown-option" onclick="selectFilter('dd-sdb','2')">2</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="table-wrap">
+            <div class="table-count" id="table-count"></div>
+            <div class="table-scroll">
+              <table>
+                <thead>
+                  <tr>
+                    <th onclick="sortTable('unite')" id="th-unite">Unité <svg class="sort-arrow" id="sa-unite" width="10" height="12" viewBox="0 0 10 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 1v10M1 7l4 4 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg></th>
+                    <th onclick="sortTable('superficie')" id="th-superficie">Superficie <svg class="sort-arrow" id="sa-superficie" width="10" height="12" viewBox="0 0 10 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 1v10M1 7l4 4 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg></th>
+                    <th onclick="sortTable('chambres')" id="th-chambres">Chambres <svg class="sort-arrow" id="sa-chambres" width="10" height="12" viewBox="0 0 10 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 1v10M1 7l4 4 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg></th>
+                    <th onclick="sortTable('prix')" id="th-prix">Prix <svg class="sort-arrow" id="sa-prix" width="10" height="12" viewBox="0 0 10 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 1v10M1 7l4 4 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg></th>
+                  </tr>
+                </thead>
+                <tbody id="apt-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Feature Strips ── -->
+  <section class="strip" style="background:#1c3828; z-index:10;">
+    <div class="strip-inner">
+      <div class="strip-text">
+        <h2 class="strip-title" style="color:#fff;">Des appartements pour étudiants</h2>
+        <div class="strip-body-wrap">
+          <p class="strip-body" style="color:rgba(255,255,255,.7);">Les appartements des Immeubles QC sont pensés pour la vie étudiante au centre-ville de Montréal. Un espace agréable et bien situé, avec les inclusions essentielles pour simplifier votre installation — réfrigérateur et cuisinière inclus.</p>
+          <a href="/location-appartements-etudiants-montreal" class="strip-cta" style="color:#fff;">
+            Voir les appartements
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M8 3l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="strip-img-wrap">
+        <img class="strip-img" src="https://images.pexels.com/photos/4144100/pexels-photo-4144100.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Étudiant qui travaille à son bureau dans un appartement" />
+      </div>
+    </div>
+  </section>
+
+  <section class="strip" style="background:#7ec8f5; z-index:20;">
+    <div class="strip-inner">
+      <div class="strip-text">
+        <h2 class="strip-title" style="color:#1c3828;">Un quartier central et vivant</h2>
+        <div class="strip-body-wrap">
+          <p class="strip-body" style="color:rgba(28,56,40,.7);">Le secteur Shaughnessy Village est reconnu pour sa vie de quartier et sa proximité avec Concordia, Dawson, LaSalle et McGill. À distance de marche du métro Atwater et Georges-Vanier, tout est accessible à pied.</p>
+          <a href="/le-quartier" class="strip-cta" style="color:#1c3828;">
+            Découvrir le quartier
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M8 3l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="strip-img-wrap">
+        <img class="strip-img" src="https://images.pexels.com/photos/5745867/pexels-photo-5745867.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Rue résidentielle de Montréal en hiver avec escaliers extérieurs" />
+      </div>
+    </div>
+  </section>
+
+  <section class="strip" style="background:#f07820; z-index:30;">
+    <div class="strip-inner">
+      <div class="strip-text">
+        <h2 class="strip-title" style="color:#1c3828;">Le bon appart, au bon endroit</h2>
+        <div class="strip-body-wrap">
+          <p class="strip-body" style="color:rgba(28,56,40,.7);">Choisir Les Immeubles QC, c'est opter pour un logement au centre-ville de Montréal, près des écoles, du métro et de toutes les commodités. Une localisation stratégique, un processus simple et une équipe professionnelle depuis 15 ans.</p>
+          <a href="/contact" class="strip-cta" style="color:#1c3828;">
+            Planifiez une visite
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M8 3l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="strip-img-wrap">
+        <img class="strip-img" src="https://images.pexels.com/photos/5662646/pexels-photo-5662646.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Balcon avec vue sur la ville" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Intro Section ── -->
+  <section class="intro-section">
+    <div class="intro-inner">
+
+      <div style="display:flex;flex-direction:column;gap:32px;">
+        <span class="intro-eyebrow">Location étudiante · Montréal Centre-Ville</span>
+        <div>
+          <h2 class="intro-title">Moins de temps<br>en déplacement.</h2>
+          <h2 class="intro-title intro-title-dim">Plus de temps pour vivre.</h2>
+        </div>
+        <div class="intro-divider"></div>
+        <p class="intro-body">
+          Vous cherchez un appartement bien situé pour vos études à Montréal ?
+          Chez Les Immeubles QC, nous savons qu'un logement étudiant doit faciliter
+          le quotidien : être près de votre école, de vos activités,
+          de vos transports et de vos essentiels. Quand on étudie à Montréal,
+          l'emplacement devient un vrai avantage.
+        </p>
+        <div class="intro-cta-row">
+          <a href="/contact" class="intro-cta-btn">
+            Planifiez une visite
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <span class="intro-cta-addr">1935 Rue Tupper, Montréal</span>
+        </div>
+      </div>
+
+      <div class="intro-img-col">
+        <div class="intro-img-wrap">
+          <img class="intro-img" src="assets/hero.png" alt="Appartements Les Immeubles QC à Montréal" />
+          <div class="intro-img-overlay"></div>
+        </div>
+        <div class="intro-badge">
+          <p class="intro-badge-num">15 ans</p>
+          <p class="intro-badge-label">d'expérience en<br>logement étudiant</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="spacer"></div>
+
+  <script src="main.js"></script>
+</body>
+</html>
