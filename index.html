@@ -45,11 +45,12 @@
         <div class="dropdown-inner" id="dropdown-inner"></div>
       </div>
 
-      <div class="mobile-menu" id="mobile-menu">
-        <div class="mobile-menu-inner" id="mobile-menu-inner"></div>
-      </div>
-
     </div>
+
+    <div class="mobile-menu" id="mobile-menu">
+      <div class="mobile-menu-inner" id="mobile-menu-inner"></div>
+    </div>
+
   </div>
 
   <!-- ── Hero ── -->
@@ -78,7 +79,7 @@
 
       <div class="apt-grid">
         <div class="apt-img-wrap">
-          <img class="apt-img" src="https://images.pexels.com/photos/2404843/pexels-photo-2404843.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Appartements au centre-ville de Montréal" />
+          <img class="apt-img" src="assets/pexels-matreding-33825327.jpg" alt="Appartements au centre-ville de Montréal" />
           <div class="apt-img-overlay"></div>
           <div class="apt-img-labels">
             <div><span class="apt-badge">Centre-ville</span></div>
@@ -220,11 +221,10 @@
           l'emplacement devient un vrai avantage.
         </p>
         <div class="intro-cta-row">
-          <a href="/contact" class="intro-cta-btn">
+          <button class="intro-cta-btn" onclick="document.getElementById('footer').scrollIntoView({behavior:'smooth'})">
             Planifiez une visite
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-          <span class="intro-cta-addr">1935 Rue Tupper, Montréal</span>
+          </button>
         </div>
       </div>
 
@@ -242,7 +242,124 @@
     </div>
   </section>
 
-  <div class="spacer"></div>
+  <!-- ── FAQ ── -->
+  <section class="faq-section">
+    <div class="faq-inner">
+
+      <div class="faq-left">
+        <h2 class="faq-heading">Vos questions,<br>nos réponses</h2>
+        <a href="/foire-aux-questions" class="faq-cta">Voir toutes les questions</a>
+      </div>
+
+      <div class="faq-right">
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+            <span>Où sont situés vos appartements ?</span>
+            <svg class="faq-chev" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7l5 5 5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="faq-a"><p>Nos appartements sont situés au 1935 Rue Tupper, dans le secteur Shaughnessy Village au centre-ville de Montréal — à distance de marche du métro Atwater et Georges-Vanier, et à proximité de Concordia, Dawson, LaSalle et McGill.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+            <span>Quels types de logements proposez-vous ?</span>
+            <svg class="faq-chev" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7l5 5 5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="faq-a"><p>Nous offrons des studios, des appartements 1, 2 et 3 chambres, à partir de 925 $ par mois. Chaque logement est conçu pour répondre aux besoins concrets des étudiants qui souhaitent vivre au centre-ville.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+            <span>Qu'est-ce qui est inclus dans le logement ?</span>
+            <svg class="faq-chev" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7l5 5 5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="faq-a"><p>Chaque appartement inclut un réfrigérateur et une cuisinière pour simplifier votre installation. Pour toute question sur les inclusions spécifiques à une unité, n'hésitez pas à nous contacter.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+            <span>Comment planifier une visite ?</span>
+            <svg class="faq-chev" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7l5 5 5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="faq-a"><p>Contactez notre équipe par téléphone au <a href="tel:5149080303">514 908-0303</a> ou par courriel à <a href="mailto:lesimmeublesqc@gmail.com">lesimmeublesqc@gmail.com</a>. Nous sommes disponibles du lundi au dimanche, de 9h à 17h.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+            <span>Les appartements sont-ils réservés aux étudiants ?</span>
+            <svg class="faq-chev" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7l5 5 5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="faq-a"><p>Nos logements sont conçus et optimisés pour la vie étudiante. Nous travaillons principalement avec des locataires qui étudient à Concordia, Dawson, LaSalle, McGill et dans d'autres établissements du centre-ville de Montréal.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+            <span>Avez-vous des logements dans d'autres secteurs de Montréal ?</span>
+            <svg class="faq-chev" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7l5 5 5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="faq-a"><p>Oui, en plus du Centre-Ville, Les Immeubles QC dispose de logements dans plusieurs quartiers : Anjou, Hochelaga, Tétreauville et Saint-Léonard. Contactez-nous pour connaître les disponibilités dans ces secteurs.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+            <span>Depuis combien de temps êtes-vous en activité ?</span>
+            <svg class="faq-chev" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7l5 5 5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="faq-a"><p>Les Immeubles QC cumule plus de 15 ans d'expérience en gestion de logements étudiants à Montréal. Notre équipe professionnelle s'engage à offrir un processus simple et un service de qualité à chaque locataire.</p></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ── -->
+  <footer class="footer-section" id="footer">
+    <div class="footer-inner">
+
+      <div class="footer-left">
+        <h2 class="footer-heading">Trouvez vôtre<br>appartement<br>dès maintenant</h2>
+        <div class="footer-info-blocks">
+
+          <div class="footer-info-block">
+            <p class="footer-info-label">Adresse</p>
+            <p class="footer-info-val">1935 Rue Tupper<br>Montréal (Québec) H3H 1N6</p>
+          </div>
+
+          <div class="footer-info-block">
+            <p class="footer-info-label">Heures d'ouverture</p>
+            <p class="footer-info-val">Lundi au dimanche : 9h à 17h</p>
+          </div>
+
+          <div class="footer-info-block">
+            <a href="tel:5149080303" class="footer-phone">T 514 908-0303</a>
+            <a href="mailto:lesimmeublesqc@gmail.com" class="footer-email">lesimmeublesqc@gmail.com</a>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="footer-right">
+        <h3 class="footer-form-heading">Planifiez une visite</h3>
+        <form class="footer-form" id="footer-form">
+          <input class="footer-input" type="text" placeholder="NOM COMPLET*" required />
+          <input class="footer-input" type="email" placeholder="COURRIEL*" required />
+          <input class="footer-input" type="tel" placeholder="TÉLÉPHONE*" required />
+          <label class="footer-checkbox-label">
+            <input class="footer-checkbox" type="checkbox" required />
+            <span>J'accepte d'être contacté par Les Immeubles QC concernant ma demande de visite.</span>
+          </label>
+          <button class="footer-submit" type="submit">Envoyer</button>
+          <p class="footer-success" id="footer-success">Merci ! Nous vous contacterons sous peu.</p>
+        </form>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 Les Immeubles QC Inc. Tous droits réservés.</p>
+    </div>
+  </footer>
 
   <script src="main.js"></script>
 </body>

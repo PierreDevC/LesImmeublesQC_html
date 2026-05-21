@@ -173,13 +173,13 @@ window.addEventListener('scroll', () => {
 
 // ── Hero scroll expand ──
 window.addEventListener('scroll', () => {
+  const maxPad = window.innerWidth < 768 ? 8 : 24;
   const progress = Math.min(window.scrollY / 500, 1);
-  const pad = Math.round((1 - progress) * 24);
-  const radius = Math.round((1 - progress) * 24);
+  const pad = Math.round((1 - progress) * maxPad);
   const c = document.getElementById('hero-container');
   c.style.marginLeft = pad + 'px';
   c.style.marginRight = pad + 'px';
-  c.style.borderRadius = radius + 'px';
+  c.style.borderRadius = pad + 'px';
 }, { passive: true });
 
 // ── Apartment table ──
@@ -278,6 +278,27 @@ document.addEventListener('mousedown', e => {
       document.getElementById(`${id}-chev`).classList.remove('open');
     }
   });
+});
+
+// ── FAQ accordion ──
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i => {
+    i.classList.remove('open');
+    i.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+  });
+  if (!isOpen) {
+    item.classList.add('open');
+    btn.setAttribute('aria-expanded', 'true');
+  }
+}
+
+// ── Footer form ──
+document.getElementById('footer-form').addEventListener('submit', function (e) {
+  e.preventDefault();
+  this.querySelectorAll('.footer-input, .footer-submit').forEach(el => el.disabled = true);
+  document.getElementById('footer-success').classList.add('visible');
 });
 
 // ── Init ──
