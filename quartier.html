@@ -74,7 +74,7 @@
 
 
     .q-strip {
-      background: var(--navy);
+      background: var(--cream);
       padding: 80px 64px;
     }
     @media (max-width: 1023px) { .q-strip { padding: 64px 32px; } }
@@ -88,26 +88,27 @@
     .q-strip-title {
       font-family: var(--font); font-weight: 800;
       font-size: clamp(1.75rem, 3.5vw, 2.75rem);
-      color: white; line-height: 1.15; letter-spacing: -.02em;
+      color: var(--forest); line-height: 1.15; letter-spacing: -.02em;
       margin-bottom: 20px;
     }
     .q-strip-body {
-      font-size: .9375rem; color: rgba(255,255,255,.65);
+      font-size: .9375rem; color: rgba(28,56,40,.7);
       line-height: 1.7; margin-bottom: 28px;
     }
     .q-strip-cta {
       display: inline-flex; align-items: center; gap: 8px;
-      padding: 13px 24px; background: white; color: var(--navy);
+      padding: 13px 24px; background: var(--navy); color: white;
       font-size: .875rem; font-weight: 700; border-radius: 12px;
       font-family: var(--font); transition: background .2s, transform .15s;
     }
-    .q-strip-cta:hover { background: #dbeafe; }
+    .q-strip-cta:hover { background: #002d80; }
     .q-strip-cta:active { transform: scale(.95); }
     .q-strip-img-wrap {
       border-radius: 18px; overflow: hidden;
-      height: 360px; flex-shrink: 0;
+      height: 680px; flex-shrink: 0;
     }
-    @media (max-width: 767px) { .q-strip-img-wrap { height: 220px; } }
+    @media (max-width: 1023px) { .q-strip-img-wrap { height: 440px; } }
+    @media (max-width: 767px)  { .q-strip-img-wrap { height: 300px; } }
     .q-strip-img { width: 100%; height: 100%; object-fit: cover; display: block; }
   </style>
 </head>
@@ -152,6 +153,9 @@
   <!-- ── Strip ── -->
   <div class="q-strip">
     <div class="q-strip-inner">
+      <div class="q-strip-img-wrap">
+        <img class="q-strip-img" src="assets/pexels-mj-khan-2150865862-34630433.jpg" alt="Rue Sainte-Catherine, Montréal" />
+      </div>
       <div>
         <h2 class="q-strip-title">Rue Sainte-Catherine et tous les services à portée de main</h2>
         <p class="q-strip-body">Cafés, épiceries, restaurants, pharmacies, parcs — tout ce dont vous avez besoin au quotidien est à quelques minutes à pied. Vivre au centre-ville de Montréal, c'est gagner du temps chaque jour.</p>
@@ -159,9 +163,6 @@
           Planifier une visite
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M8 3l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
-      </div>
-      <div class="q-strip-img-wrap">
-        <img class="q-strip-img" src="assets/pexels-german-korb-1920614-9899631.jpg" alt="Vie de quartier à Montréal" />
       </div>
     </div>
   </div>

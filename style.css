@@ -688,12 +688,18 @@ td.td-price { font-weight: 700; color: #1a7a3c; }
   overflow: hidden;
 }
 
+@keyframes showcase-zoom {
+  from { transform: scale(1); }
+  to   { transform: scale(1.08); }
+}
+
 .showcase-main-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
   transition: opacity .25s ease;
+  animation: showcase-zoom 9s ease-out forwards;
 }
 
 .showcase-content-col {
@@ -813,6 +819,14 @@ td.td-price { font-weight: 700; color: #1a7a3c; }
   color: var(--navy);
   line-height: 1.1;
   letter-spacing: -.02em;
+  margin-bottom: 12px;
+}
+
+.poi-subheading {
+  font-size: .9375rem;
+  color: rgba(0,31,91,.55);
+  line-height: 1.65;
+  max-width: 380px;
   margin-bottom: 32px;
 }
 
@@ -909,8 +923,20 @@ td.td-price { font-weight: 700; color: #1a7a3c; }
 @media (max-width: 767px) {
   .poi-section { padding: 56px 20px; }
   .poi-inner { grid-template-columns: 1fr; gap: 36px; }
-  .poi-canvas { height: 320px; }
-  .poi-pill { font-size: .875rem; padding: 11px 18px; }
+  .poi-canvas {
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-content: flex-start;
+    padding: 4px 0;
+  }
+  .poi-pill {
+    position: static;
+    font-size: .875rem;
+    padding: 10px 16px;
+    white-space: normal;
+  }
   .poi-img-col { height: 240px; }
 }
 
@@ -1246,7 +1272,24 @@ td.td-price { font-weight: 700; color: #1a7a3c; }
   font-size: .72rem;
   color: rgba(255,255,255,.28);
   letter-spacing: .04em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
+
+.footer-shortkut-logo {
+  height: 28px;
+  width: auto;
+  opacity: .45;
+}
+
+.footer-legal-link {
+  color: rgba(255,255,255,.28);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color .2s;
+}
+.footer-legal-link:hover { color: rgba(255,255,255,.6); }
 
 /* ═══════════════════════════════════════
    Tablet — 768 px → 1023 px

@@ -1,13 +1,13 @@
 // ── Nav data ──
 const navItems = [
   { label: "Accueil", href: "index.html" },
-  { label: "Locations d'appartements", href: "#locations" },
-  { label: "Le projet", href: "/projet" },
+  { label: "Locations d'appartements", href: "index.html#locations" },
+  { label: "Le projet", href: "projet.html" },
   { label: "Le quartier", href: "quartier.html" },
-  { label: "FAQ", href: "#faq" },
-  { label: "Galerie", href: "#galerie" },
+  { label: "FAQ", href: "index.html#faq" },
+  { label: "Galerie", href: "index.html#galerie" },
   { label: "À propos", href: "apropos.html" },
-  { label: "Contact", href: "#footer" },
+  { label: "Contact", href: "index.html#footer" },
 ];
 
 // ── Marquee ──
@@ -135,7 +135,7 @@ function buildMobileNav() {
     inner.appendChild(wrap);
   });
   const cta = document.createElement('a');
-  cta.href = '/louer';
+  cta.href = 'index.html#locations';
   cta.className = 'mobile-cta';
   cta.textContent = 'Louer un appartement';
   cta.addEventListener('click', () => { mobileOpen = false; updateMobileMenu(); });
@@ -302,6 +302,9 @@ function showcaseGo(idx) {
   setTimeout(() => {
     main.src = showcasePhotos[showcaseIdx];
     main.style.opacity = '1';
+    main.style.animation = 'none';
+    void main.offsetHeight;
+    main.style.animation = '';
   }, 200);
   document.querySelectorAll('.showcase-thumb').forEach((btn, i) => {
     btn.classList.toggle('active', i === showcaseIdx);
@@ -314,6 +317,9 @@ function initPoiCanvas() {
   if (!canvas) return;
 
   const pills = Array.from(canvas.querySelectorAll('.poi-pill'));
+
+  if (window.innerWidth <= 767) return;
+
   pills.forEach(p => { p.style.rotate = (p.dataset.rot || '0') + 'deg'; });
 
   requestAnimationFrame(() => {
