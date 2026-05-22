@@ -17,6 +17,7 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
 /* ── Marquee Banner ── */
 .marquee-banner {
   width: 100%;
+  max-width: 100vw;
   overflow: hidden;
   background: var(--navy);
   padding: 8px 0;
@@ -664,6 +665,7 @@ td.td-price { font-weight: 700; color: #1a7a3c; }
   background: var(--navy);
   position: relative;
   z-index: 35;
+  overflow: hidden;
 }
 
 .showcase-inner {
@@ -672,8 +674,11 @@ td.td-price { font-weight: 700; color: #1a7a3c; }
   min-height: 600px;
 }
 
+.showcase-inner > * { min-width: 0; }
+
 .showcase-img-col {
   padding: 28px 0 28px 28px;
+  overflow: hidden;
 }
 
 .showcase-main-img-wrap {
@@ -776,7 +781,9 @@ td.td-price { font-weight: 700; color: #1a7a3c; }
 }
 
 @media (max-width: 767px) {
-  .showcase-img-col { height: 260px; padding: 14px 14px 0; }
+  .showcase-img-col { height: 260px; padding: 14px 14px 0; width: 100%; overflow: hidden; }
+  .showcase-main-img-wrap { width: 100%; max-width: 100%; }
+  .showcase-main-img { width: 100%; max-width: 100%; }
   .showcase-content-col { padding: 28px 16px 32px; gap: 28px; }
   .showcase-thumb { width: 46px; height: 46px; border-radius: 8px; }
   .showcase-arrow { width: 40px; height: 40px; }
@@ -785,7 +792,7 @@ td.td-price { font-weight: 700; color: #1a7a3c; }
 /* ── POI Pills ── */
 .poi-section {
   background: var(--cream);
-  padding: 96px 64px;
+  padding: 140px 64px;
   position: relative;
   z-index: 36;
 }
@@ -799,14 +806,13 @@ td.td-price { font-weight: 700; color: #1a7a3c; }
   align-items: center;
 }
 
-.poi-eyebrow {
-  display: block;
-  font-size: .75rem;
-  font-weight: 600;
-  letter-spacing: .25em;
-  text-transform: uppercase;
-  color: rgba(0,31,91,.45);
+.poi-heading {
   font-family: var(--font);
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.1;
+  letter-spacing: -.02em;
   margin-bottom: 32px;
 }
 
@@ -839,22 +845,65 @@ td.td-price { font-weight: 700; color: #1a7a3c; }
 }
 
 .poi-img-col {
-  min-height: 260px;
-  max-height: 320px;
+  position: relative;
+  height: 340px;
+  overflow: visible;
 }
 
-.poi-img {
+.poi-card-stack {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.poi-card {
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  overflow: hidden;
+  cursor: pointer;
+  user-select: none;
+  will-change: transform;
+  transform-origin: bottom left;
+  transition: transform 0.55s cubic-bezier(.25,.46,.45,.94),
+              box-shadow 0.55s ease;
+}
+
+.poi-card img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 20px;
   display: block;
+  pointer-events: none;
+}
+
+.poi-card.pos-front {
+  transform: rotate(0deg);
+  z-index: 3;
+  box-shadow: 0 14px 40px rgba(0,0,0,.22);
+}
+
+.poi-card.pos-mid {
+  transform: rotate(5deg);
+  z-index: 2;
+  box-shadow: 0 6px 20px rgba(0,0,0,.14);
+}
+
+.poi-card.pos-back {
+  transform: rotate(10deg);
+  z-index: 1;
+  box-shadow: 0 3px 10px rgba(0,0,0,.1);
+}
+
+.poi-card.pos-front:hover {
+  transform: rotate(0deg) translate(3px, -5px);
+  box-shadow: 0 20px 52px rgba(0,0,0,.28);
 }
 
 @media (max-width: 1023px) {
   .poi-section { padding: 72px 32px; }
   .poi-inner { grid-template-columns: 1fr; gap: 48px; }
-  .poi-img-col { min-height: 280px; }
+  .poi-img-col { height: 300px; }
 }
 
 @media (max-width: 767px) {
@@ -862,7 +911,7 @@ td.td-price { font-weight: 700; color: #1a7a3c; }
   .poi-inner { grid-template-columns: 1fr; gap: 36px; }
   .poi-canvas { height: 320px; }
   .poi-pill { font-size: .875rem; padding: 11px 18px; }
-  .poi-img-col { min-height: 220px; max-height: 260px; }
+  .poi-img-col { height: 240px; }
 }
 
 /* ── FAQ ── */

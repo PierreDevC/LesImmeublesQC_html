@@ -11,7 +11,7 @@ const navItems = [
 ];
 
 // ── Marquee ──
-(function () {
+function initMarquee() {
   const track = document.getElementById('marquee-track');
   if (!track) return;
   const text = "Fais une réservation maintenant au 514 908-0303.";
@@ -19,7 +19,7 @@ const navItems = [
     `<span class="marquee-item">${text}</span>`
   ).join('');
   track.innerHTML = html + html;
-})();
+}
 
 // ── Schools marquee ──
 (function () {
@@ -90,10 +90,12 @@ function scheduleClose() {
   closeTimer = setTimeout(closeNav, 120);
 }
 
-document.getElementById('dropdown-panel').addEventListener('mouseenter', () => {
-  if (closeTimer) clearTimeout(closeTimer);
-});
-document.getElementById('dropdown-panel').addEventListener('mouseleave', scheduleClose);
+function bindDropdownPanel() {
+  document.getElementById('dropdown-panel').addEventListener('mouseenter', () => {
+    if (closeTimer) clearTimeout(closeTimer);
+  });
+  document.getElementById('dropdown-panel').addEventListener('mouseleave', scheduleClose);
+}
 
 // ── Mobile nav ──
 let mobileOpen = false;
@@ -157,11 +159,13 @@ function updateMobileMenu() {
   document.getElementById('hamburger').classList.toggle('open', mobileOpen);
 }
 
-document.getElementById('hamburger').addEventListener('click', () => {
-  mobileOpen = !mobileOpen;
-  mobileOpenItem = null;
-  updateMobileMenu();
-});
+function bindHamburger() {
+  document.getElementById('hamburger').addEventListener('click', () => {
+    mobileOpen = !mobileOpen;
+    mobileOpenItem = null;
+    updateMobileMenu();
+  });
+}
 
 // ── Navbar scroll shrink + auto-hide ──
 let lastScrollY = 0;
@@ -254,13 +258,12 @@ function renderTable() {
         <td>${u.superficie} pi²</td>
         <td>${u.chambres}</td>
         <td class="td-price">${u.statut === 'Disponible' ? u.prix.toLocaleString('fr-CA') + (isMobile ? ' $' : ' $/mois') : '—'}</td>
-        <td>${u.occupation}</td>
         <td><span class="statut-badge ${statutClass[u.statut] || ''}">${u.statut}</span></td>
       </tr>
     `).join('');
   }
 
-  ['unite', 'superficie', 'chambres', 'prix', 'occupation', 'statut'].forEach(k => {
+  ['unite', 'superficie', 'chambres', 'prix', 'statut'].forEach(k => {
     document.getElementById(`th-${k}`).classList.toggle('sort-active', k === sortKey);
     const sa = document.getElementById(`sa-${k}`);
     sa.classList.toggle('active', k === sortKey);
@@ -370,14 +373,63 @@ function toggleFaq(btn) {
 }
 
 // ── Footer form ──
-document.getElementById('footer-form')?.addEventListener('submit', function (e) {
-  e.preventDefault();
-  this.querySelectorAll('.footer-input, .footer-submit').forEach(el => el.disabled = true);
-  document.getElementById('footer-success').classList.add('visible');
-});
+function bindFooterForm() {
+  document.getElementById('footer-form')?.addEventListener('submit', function (e) {
+    e.preventDefault();
+    this.querySelectorAll('.footer-input, .footer-submit').forEach(el => el.disabled = true);
+    document.getElementById('footer-success').classList.add('visible');
+  });
+}
+
+// ── POI card stack shuffle ──
+function initPoiCardStack() {
+  const stack = document.getElementById('poi-card-stack');
+  if (!stack) return;
+  const cards = Array.from(stack.querySelectorAll('.poi-card'));
+  const pos = ['pos-front', 'pos-mid', 'pos-back'];
+  // posOf[cardIdx] = positionIdx: 0=front, 1=mid, 2=back
+  let posOf = [2, 1, 0]; // card0→back, card1→mid, card2→front
+  let animating = false;
+
+  function shuffle() {
+    if (animating) return;
+    animating = true;
+    const frontIdx = posOf.indexOf(0);
+    cards[frontIdx].style.zIndex = '0';
+    posOf = posOf.map(p => (p + 2) % 3);
+    cards.forEach((card, i) => {
+      card.className = 'poi-card ' + pos[posOf[i]];
+    });
+    setTimeout(() => {
+      cards[frontIdx].style.zIndex = '';
+      animating = false;
+    }, 580);
+  }
+
+  stack.addEventListener('click', shuffle);
+  setInterval(shuffle, 1500);
+}
 
 // ── Init ──
-buildDesktopNav();
-buildMobileNav();
-renderTable();
-initPoiCanvas();
+(async function () {
+  const base = document.querySelector('script[src="main.js"]')
+    ? '' : '../';
+
+  const [navbarHTML, footerHTML] = await Promise.all([
+    fetch(`${base}partials/navbar.html`).then(r => r.text()),
+    fetch(`${base}partials/footer.html`).then(r => r.text()),
+  ]);
+
+  document.getElementById('navbar-placeholder').outerHTML = navbarHTML;
+  document.getElementById('footer-placeholder').outerHTML = footerHTML;
+
+  initMarquee();
+  bindDropdownPanel();
+  bindHamburger();
+  bindFooterForm();
+  buildDesktopNav();
+  buildMobileNav();
+  renderTable();
+  initPoiCanvas();
+  initPoiCardStack();
+})();
