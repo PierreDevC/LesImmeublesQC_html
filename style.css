@@ -1393,6 +1393,19 @@ textarea.footer-input {
   .footer-phone   { font-size: 1.1rem; }
   .footer-input   { padding: 13px 20px; }
   .footer-submit  { padding: 13px 28px; }
+
+  /* Search bar */
+  .search-bar-container { padding: 20px 16px; border-radius: 16px; }
+  .search-input-field   { font-size: 1rem; padding: 14px 14px 14px 48px; }
+  .search-filters-grid  { gap: 16px; }
+  .search-submit-btn    { padding: 14px 24px; font-size: 0.9rem; }
+
+  /* Listings grid */
+  .rentals-grid-container { margin-top: 1rem; }
+  .rental-card-img-wrap   { height: 200px; }
+  .rental-card-content    { padding: 16px; gap: 12px; }
+  .rental-card-price      { font-size: 1.25rem; }
+  .rental-card-title      { font-size: 1rem; }
 }
 
 /* ── Homepage Search Bar ── */

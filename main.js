@@ -50,6 +50,7 @@ let closeTimer = null;
 
 function buildDesktopNav() {
   const nav = document.getElementById('nav-links');
+  if (!nav) return;
   navItems.forEach(item => {
     if (item.children) {
       const btn = document.createElement('button');
@@ -104,10 +105,12 @@ function scheduleClose() {
 }
 
 function bindDropdownPanel() {
-  document.getElementById('dropdown-panel').addEventListener('mouseenter', () => {
+  const panel = document.getElementById('dropdown-panel');
+  if (!panel) return;
+  panel.addEventListener('mouseenter', () => {
     if (closeTimer) clearTimeout(closeTimer);
   });
-  document.getElementById('dropdown-panel').addEventListener('mouseleave', scheduleClose);
+  panel.addEventListener('mouseleave', scheduleClose);
 }
 
 // ── Mobile nav ──
@@ -116,6 +119,7 @@ let mobileOpenItem = null;
 
 function buildMobileNav() {
   const inner = document.getElementById('mobile-menu-inner');
+  if (!inner) return;
   navItems.forEach(item => {
     const wrap = document.createElement('div');
     const btn = document.createElement('button');
@@ -168,12 +172,16 @@ function toggleMobileSub(label) {
 }
 
 function updateMobileMenu() {
-  document.getElementById('mobile-menu').classList.toggle('open', mobileOpen);
-  document.getElementById('hamburger').classList.toggle('open', mobileOpen);
+  const menu = document.getElementById('mobile-menu');
+  const btn = document.getElementById('hamburger');
+  if (menu) menu.classList.toggle('open', mobileOpen);
+  if (btn) btn.classList.toggle('open', mobileOpen);
 }
 
 function bindHamburger() {
-  document.getElementById('hamburger').addEventListener('click', () => {
+  const btn = document.getElementById('hamburger');
+  if (!btn) return;
+  btn.addEventListener('click', () => {
     mobileOpen = !mobileOpen;
     mobileOpenItem = null;
     updateMobileMenu();
@@ -188,6 +196,10 @@ window.addEventListener('scroll', () => {
   if (!ticking) {
     requestAnimationFrame(() => {
       const navbar = document.getElementById('navbar');
+      if (!navbar) {
+        ticking = false;
+        return;
+      }
       const currentY = window.scrollY;
 
       navbar.classList.toggle('scrolled', currentY > 40);
@@ -623,12 +635,12 @@ function initPoiCardStack() {
 
 // ── Init ──
 (function () {
+  buildDesktopNav();
+  buildMobileNav();
   initMarquee();
   bindDropdownPanel();
   bindHamburger();
   bindFooterForm();
-  buildDesktopNav();
-  buildMobileNav();
   initSearch();
   renderTable();
   initPoiCanvas();
