@@ -8,117 +8,17 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
-  <style>
-    /* ── Quartier-specific styles ── */
-    .q-hero {
-      position: relative;
-      overflow: hidden;
-      height: 520px;
-      background: var(--forest);
-    }
-    @media (max-width: 767px) { .q-hero { height: 360px; } }
-    .q-hero-img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      object-position: center 90%;
-      display: block;
-      opacity: .55;
-    }
-    .q-hero-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(160deg, rgba(0,31,91,.55) 0%, rgba(28,56,40,.4) 100%);
-    }
-    .q-hero-text {
-      position: absolute; bottom: 48px; left: 64px; right: 64px;
-    }
-    @media (max-width: 767px) { .q-hero-text { bottom: 28px; left: 24px; right: 24px; } }
-    .q-hero-eyebrow {
-      font-size: .75rem; font-weight: 600; letter-spacing: .18em;
-      text-transform: uppercase; color: rgba(255,255,255,.7);
-      font-family: var(--font); margin-bottom: 12px; display: block;
-    }
-    .q-hero-title {
-      font-family: var(--font); font-weight: 800;
-      font-size: clamp(2.25rem, 5vw, 4rem);
-      color: white; line-height: 1.1; letter-spacing: -.02em;
-    }
 
-    .q-intro {
-      background: var(--cream);
-      padding: 96px 64px;
-    }
-    @media (max-width: 1023px) { .q-intro { padding: 72px 32px; } }
-    @media (max-width: 767px)  { .q-intro { padding: 56px 20px; } }
-    .q-intro-inner {
-      max-width: 1280px; margin: 0 auto;
-      display: grid; grid-template-columns: 1fr;
-      gap: 48px; align-items: start;
-    }
-    @media (min-width: 1024px) { .q-intro-inner { grid-template-columns: 1fr 1fr; gap: 80px; } }
-    .q-intro-eyebrow {
-      font-size: .75rem; font-weight: 600; letter-spacing: .14em;
-      text-transform: uppercase; color: rgba(28,56,40,.5);
-      font-family: var(--font); margin-bottom: 16px; display: block;
-    }
-    .q-intro-title {
-      font-family: var(--font); font-weight: 800;
-      font-size: clamp(2rem, 4vw, 3rem);
-      color: var(--forest); line-height: 1.1;
-      letter-spacing: -.02em; margin-bottom: 24px;
-    }
-    .q-intro-body {
-      font-size: 1rem; color: rgba(28,56,40,.75);
-      line-height: 1.75; margin-bottom: 0;
-    }
-    .q-intro-body + .q-intro-body { margin-top: 16px; }
-
-
-    .q-strip {
-      background: var(--cream);
-      padding: 80px 64px;
-    }
-    @media (max-width: 1023px) { .q-strip { padding: 64px 32px; } }
-    @media (max-width: 767px)  { .q-strip { padding: 48px 20px; } }
-    .q-strip-inner {
-      max-width: 1280px; margin: 0 auto;
-      display: grid; grid-template-columns: 1fr;
-      gap: 40px; align-items: center;
-    }
-    @media (min-width: 1024px) { .q-strip-inner { grid-template-columns: 1fr 1fr; gap: 72px; } }
-    .q-strip-title {
-      font-family: var(--font); font-weight: 800;
-      font-size: clamp(1.75rem, 3.5vw, 2.75rem);
-      color: var(--forest); line-height: 1.15; letter-spacing: -.02em;
-      margin-bottom: 20px;
-    }
-    .q-strip-body {
-      font-size: .9375rem; color: rgba(28,56,40,.7);
-      line-height: 1.7; margin-bottom: 28px;
-    }
-    .q-strip-cta {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 13px 24px; background: var(--navy); color: white;
-      font-size: .875rem; font-weight: 700; border-radius: 12px;
-      font-family: var(--font); transition: background .2s, transform .15s;
-    }
-    .q-strip-cta:hover { background: #002d80; }
-    .q-strip-cta:active { transform: scale(.95); }
-    .q-strip-img-wrap {
-      border-radius: 18px; overflow: hidden;
-      height: 680px; flex-shrink: 0;
-    }
-    @media (max-width: 1023px) { .q-strip-img-wrap { height: 440px; } }
-    @media (max-width: 767px)  { .q-strip-img-wrap { height: 300px; } }
-    .q-strip-img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  </style>
 </head>
 <body>
 
   <div id="navbar-placeholder"></div>
 
+  <main id="primary-content">
+
   <!-- ── Hero ── -->
   <div class="q-hero">
-    <img class="q-hero-img" src="assets/wisshajj-downtown-4730166_1920.jpg" alt="Rue résidentielle de Montréal" />
+    <img class="q-hero-img" src="assets/wisshajj-downtown-4730166_1920.webp" alt="Rue résidentielle de Montréal" />
     <div class="q-hero-overlay"></div>
     <div class="q-hero-text">
       <span class="q-hero-eyebrow">Centre-Ville · Montréal</span>
@@ -154,7 +54,7 @@
   <div class="q-strip">
     <div class="q-strip-inner">
       <div class="q-strip-img-wrap">
-        <img class="q-strip-img" src="assets/pexels-mj-khan-2150865862-34630433.jpg" alt="Rue Sainte-Catherine, Montréal" />
+        <img class="q-strip-img" src="assets/pexels-mj-khan-2150865862-34630433.webp" alt="Rue Sainte-Catherine, Montréal" />
       </div>
       <div>
         <h2 class="q-strip-title">Rue Sainte-Catherine et tous les services à portée de main</h2>
@@ -191,6 +91,8 @@
       </div>
     </div>
   </div>
+
+  </main>
 
   <div id="footer-placeholder"></div>
 

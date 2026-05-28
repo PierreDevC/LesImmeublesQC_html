@@ -1,0 +1,13 @@
+# Mac OS system files
+.DS_Store
+Thumbs.db
+
+# AI Client & Agent Caches
+.antigravitycli/
+.claude/
+.gemini/
+
+# IDE / Editor folders
+.vscode/
+.idea/
+*.log

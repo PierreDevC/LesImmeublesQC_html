@@ -13,10 +13,12 @@
 
   <div id="navbar-placeholder"></div>
 
+  <main id="primary-content">
+
   <!-- ── Hero ── -->
   <section class="hero-section">
     <div class="hero-container" id="hero-container">
-      <video class="hero-video" autoplay muted loop playsinline src="assets/7683858-hd_1920_1080_30fps.mp4"></video>
+      <video class="hero-video" autoplay muted loop playsinline poster="assets/hero.webp" src="assets/7683858-hd_1920_1080_30fps.mp4"></video>
       <div style="position:absolute;inset:0;background:linear-gradient(135deg,#001f5b 0%,#1c3828 100%);z-index:-1;"></div>
       <div class="hero-grad-tl"></div>
       <div class="hero-grad-br"></div>
@@ -29,46 +31,146 @@
     </div>
   </section>
 
-  <!-- ── Apartment Table ── -->
-  <section class="apt-section" id="locations">
+  <!-- ── Search Section ── -->
+  <section class="apt-section" id="search-section">
     <div class="apt-inner">
       <div class="apt-heading">
-        <p class="apt-eyebrow">Location d'appartements</p>
-        <h2 class="apt-title">Trouvez votre appartement</h2>
-        <p class="apt-desc">Vous cherchez un appartement bien situé pour vos études à Montréal, près du campus, du métro et des services essentiels ? Chez Les Immeubles QC, nous savons qu'un logement étudiant doit faciliter le quotidien. L'emplacement devient un vrai avantage : moins de temps en déplacement, plus de temps pour étudier et profiter de la ville.</p>
+        <p class="apt-eyebrow">Recherche de propriétés</p>
+        <h2 class="apt-title">Trouvez votre futur chez-vous</h2>
+        <p class="apt-desc">Utilisez notre outil de recherche pour filtrer les appartements disponibles par secteur, projet, budget et superficie.</p>
       </div>
 
-      <div class="apt-grid">
-        <div class="apt-img-wrap">
-          <img class="apt-img" src="assets/hero.png" alt="Appartements au centre-ville de Montréal" />
-          <div class="apt-img-overlay"></div>
-        </div>
-
-        <div class="apt-right">
-
-          <div class="table-wrap">
-            <div class="table-count" id="table-count"></div>
-            <div class="table-scroll">
-              <table>
-                <thead>
-                  <tr>
-                    <th onclick="sortTable('unite')" id="th-unite">Unité <svg class="sort-arrow" id="sa-unite" width="10" height="12" viewBox="0 0 10 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 1v10M1 7l4 4 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg></th>
-                    <th onclick="sortTable('superficie')" id="th-superficie">Superficie <svg class="sort-arrow" id="sa-superficie" width="10" height="12" viewBox="0 0 10 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 1v10M1 7l4 4 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg></th>
-                    <th onclick="sortTable('chambres')" id="th-chambres">Chambres <svg class="sort-arrow" id="sa-chambres" width="10" height="12" viewBox="0 0 10 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 1v10M1 7l4 4 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg></th>
-                    <th onclick="sortTable('prix')" id="th-prix">Prix <svg class="sort-arrow" id="sa-prix" width="10" height="12" viewBox="0 0 10 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 1v10M1 7l4 4 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg></th>
-                    <th onclick="sortTable('statut')" id="th-statut">Statut <svg class="sort-arrow" id="sa-statut" width="10" height="12" viewBox="0 0 10 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 1v10M1 7l4 4 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg></th>
-                  </tr>
-                </thead>
-                <tbody id="apt-tbody"></tbody>
-              </table>
+      <div class="search-bar-container">
+        <form class="search-bar-form" action="location-appartements-etudiants-montreal.html" method="GET">
+          
+          <!-- Text Search Input -->
+          <div class="search-input-group">
+            <div class="search-input-wrap">
+              <svg class="search-input-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              <input type="text" id="search-text" name="q" class="search-input-field" placeholder="Rechercher des mots-clés, rues, points d'intérêt..." />
             </div>
           </div>
+
+          <div class="search-filters-grid">
+            
+            <!-- Secteur -->
+            <div class="search-filter-group">
+              <label for="filter-secteur" class="search-filter-label">Secteur</label>
+              <div class="search-select-wrap">
+                <select id="filter-secteur" name="secteur" class="search-select">
+                  <option value="">Tous les secteurs</option>
+                  <option value="centre-ville">Montréal Centre-Ville</option>
+                  <option value="tetreaultville">Tétreaultville</option>
+                  <option value="anjou">Anjou</option>
+                  <option value="hochelaga">Hochelaga</option>
+                  <option value="saint-leonard">Saint-Léonard</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Projet -->
+            <div class="search-filter-group">
+              <label for="filter-projet" class="search-filter-label">Projet</label>
+              <div class="search-select-wrap">
+                <select id="filter-projet" name="projet" class="search-select">
+                  <option value="">Tous les projets</option>
+                  <option value="tupper">1935 Rue Tupper</option>
+                  <option value="aubry">2930 Rue Aubry</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Disponibilité -->
+            <div class="search-filter-group">
+              <label for="filter-disponibilite" class="search-filter-label">Disponibilité</label>
+              <div class="search-select-wrap">
+                <select id="filter-disponibilite" name="disponibilite" class="search-select">
+                  <option value="">Toutes les disponibilités</option>
+                  <option value="disponible">Disponible</option>
+                  <option value="occupe">Occupé</option>
+                  <option value="reserve">Réservé</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Superficie -->
+            <div class="search-filter-group">
+              <label for="filter-superficie" class="search-filter-label">Superficie</label>
+              <div class="search-select-wrap">
+                <select id="filter-superficie" name="superficie" class="search-select">
+                  <option value="">Toutes les superficies</option>
+                  <option value="small">&lt; 400 pi²</option>
+                  <option value="medium">400 - 500 pi²</option>
+                  <option value="large">&gt; 500 pi²</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Prix -->
+            <div class="search-filter-group">
+              <label for="filter-prix" class="search-filter-label">Budget</label>
+              <div class="search-select-wrap">
+                <select id="filter-prix" name="prix" class="search-select">
+                  <option value="">Tous les budgets</option>
+                  <option value="low">&lt; 1 400 $ / mois</option>
+                  <option value="mid">1 400 $ - 1 600 $ / mois</option>
+                  <option value="high">&gt; 1 600 $ / mois</option>
+                </select>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="search-submit-wrap">
+            <button type="submit" class="search-submit-btn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              Rechercher
+            </button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── Split Promo Section ── -->
+  <section class="promo-section">
+    <div class="promo-inner">
+      <div class="promo-content">
+        <p class="promo-eyebrow">La vie étudiante simplifiée</p>
+        <h2 class="promo-title">Des appartements pratiques pour la vie étudiante</h2>
+        <p class="promo-text">Les appartements proposés par Les Immeubles QC sont pensés pour répondre aux besoins concrets des étudiants qui veulent vivre près du centre-ville. L'idée est simple : offrir un logement fonctionnel, bien situé et facile à intégrer dans une routine active.</p>
+        
+        <ul class="promo-features">
+          <li>
+            <svg class="promo-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <span><strong>Emplacement central</strong> à Montréal, près de vos campus (Concordia, McGill, Dawson, LaSalle)</span>
+          </li>
+          <li>
+            <svg class="promo-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <span><strong>Transport en commun</strong> à distance de marche des stations de métro Atwater et Georges-Vanier</span>
+          </li>
+          <li>
+            <svg class="promo-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <span><strong>Quartier central et vivant</strong> (Shaughnessy Village) offrant commerces, parcs et services essentiels</span>
+          </li>
+          <li>
+            <svg class="promo-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <span><strong>Processus simple</strong> et accompagnement professionnel par notre équipe chevronnée</span>
+          </li>
+        </ul>
+
+        <div class="promo-cta-wrap">
+          <a href="location-appartements-etudiants-montreal.html" class="promo-btn">Voir les appartements disponibles</a>
+        </div>
+      </div>
+      <div class="promo-image-col">
+        <div class="promo-img-wrap">
+          <img src="assets/pexels-rdne-7464498.webp" alt="Étudiants discutant et travaillant dans un appartement lumineux à Montréal" class="promo-img" loading="lazy" />
         </div>
       </div>
     </div>
   </section>
-
-
 
   <!-- ── Feature Strips ── -->
   <section class="strip" style="background:#1c3828; z-index:10;">
@@ -84,7 +186,7 @@
         </div>
       </div>
       <div class="strip-img-wrap">
-        <img class="strip-img" src="https://images.pexels.com/photos/4144100/pexels-photo-4144100.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Étudiant qui travaille à son bureau dans un appartement" />
+        <img class="strip-img" loading="lazy" src="https://images.pexels.com/photos/4144100/pexels-photo-4144100.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Étudiant qui travaille à son bureau dans un appartement" />
       </div>
     </div>
   </section>
@@ -102,7 +204,7 @@
         </div>
       </div>
       <div class="strip-img-wrap">
-        <img class="strip-img" src="assets/pexels-george-pak-7972513.jpg" alt="Rue résidentielle de Montréal en hiver avec escaliers extérieurs" />
+        <img class="strip-img" loading="lazy" src="assets/pexels-george-pak-7972513.webp" alt="Rue résidentielle de Montréal en hiver avec escaliers extérieurs" />
       </div>
     </div>
   </section>
@@ -120,7 +222,7 @@
         </div>
       </div>
       <div class="strip-img-wrap">
-        <img class="strip-img" src="assets/pexels-narno-beats-2153147039-34418263.jpg" alt="Balcon avec vue sur la ville" />
+        <img class="strip-img" loading="lazy" src="assets/pexels-narno-beats-2153147039-34418263.webp" alt="Balcon avec vue sur la ville" />
       </div>
     </div>
   </section>
@@ -147,13 +249,13 @@
       <div class="poi-img-col">
         <div class="poi-card-stack" id="poi-card-stack">
           <div class="poi-card pos-back">
-            <img src="assets/pexels-coldbeer-277046249-27052301.jpg" alt="Étudiant dans un appartement à Montréal">
+            <img loading="lazy" src="assets/pexels-coldbeer-277046249-27052301.webp" alt="Étudiant dans un appartement à Montréal">
           </div>
           <div class="poi-card pos-mid">
-            <img src="assets/pexels-sara-perera-2150217400-33506441.jpg" alt="Vue sur Montréal">
+            <img loading="lazy" src="assets/pexels-sara-perera-2150217400-33506441.webp" alt="Vue sur Montréal">
           </div>
           <div class="poi-card pos-front">
-            <img src="assets/ryunosuke-kikuno-r7Mh9RNMrzY-unsplash.jpg" alt="Quartier centre-ville Montréal">
+            <img loading="lazy" src="assets/ryunosuke-kikuno-r7Mh9RNMrzY-unsplash.webp" alt="Quartier centre-ville Montréal">
           </div>
         </div>
       </div>
@@ -296,6 +398,8 @@
 
     </div>
   </div>
+
+  </main>
 
   <!-- ── Footer ── -->
   <div id="footer-placeholder"></div>

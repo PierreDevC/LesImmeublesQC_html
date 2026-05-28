@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Location d'appartements étudiants à Montréal — Les Immeubles QC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div id="navbar-placeholder"></div>
+
+  <main id="primary-content">
+
+
+
+  <!-- ── Breadcrumbs ── -->
+  <div class="site-breadcrumbs">
+    <span><a href="index.html">Accueil</a> » <span class="breadcrumb_last">Locations d'appartements</span></span>
+  </div>
+
+  <!-- ── Listings Section ── -->
+  <section class="apt-section" id="listings-section" style="padding-top: 24px;">
+    <div class="apt-inner">
+      <div class="apt-heading" style="margin-bottom: 32px;">
+        <p class="apt-eyebrow">Recherche & Disponibilités</p>
+        <h2 class="apt-title">Filtrez et trouvez votre unité</h2>
+        <p class="apt-desc">Utilisez les filtres ci-dessous pour trouver l'appartement qui correspond le mieux à vos besoins en temps réel.</p>
+      </div>
+
+      <!-- Identical Search Bar -->
+      <div class="search-bar-container" style="margin-bottom: 48px;">
+        <form class="search-bar-form" id="listings-search-form" onsubmit="event.preventDefault();">
+          
+          <!-- Text Search Input -->
+          <div class="search-input-group">
+            <div class="search-input-wrap">
+              <svg class="search-input-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              <input type="text" id="search-text" class="search-input-field" placeholder="Rechercher des mots-clés, rues, points d'intérêt..." />
+            </div>
+          </div>
+
+          <div class="search-filters-grid">
+            
+            <!-- Secteur -->
+            <div class="search-filter-group">
+              <label for="filter-secteur" class="search-filter-label">Secteur</label>
+              <div class="search-select-wrap">
+                <select id="filter-secteur" class="search-select">
+                  <option value="">Tous les secteurs</option>
+                  <option value="centre-ville">Montréal Centre-Ville</option>
+                  <option value="tetreaultville">Tétreaultville</option>
+                  <option value="anjou">Anjou</option>
+                  <option value="hochelaga">Hochelaga</option>
+                  <option value="saint-leonard">Saint-Léonard</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Projet -->
+            <div class="search-filter-group">
+              <label for="filter-projet" class="search-filter-label">Projet</label>
+              <div class="search-select-wrap">
+                <select id="filter-projet" class="search-select">
+                  <option value="">Tous les projets</option>
+                  <option value="tupper">1935 Rue Tupper</option>
+                  <option value="aubry">2930 Rue Aubry</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Disponibilité -->
+            <div class="search-filter-group">
+              <label for="filter-disponibilite" class="search-filter-label">Disponibilité</label>
+              <div class="search-select-wrap">
+                <select id="filter-disponibilite" class="search-select">
+                  <option value="">Toutes les disponibilités</option>
+                  <option value="disponible">Disponible</option>
+                  <option value="occupe">Occupé</option>
+                  <option value="reserve">Réservé</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Superficie -->
+            <div class="search-filter-group">
+              <label for="filter-superficie" class="search-filter-label">Superficie</label>
+              <div class="search-select-wrap">
+                <select id="filter-superficie" class="search-select">
+                  <option value="">Toutes les superficies</option>
+                  <option value="small">&lt; 400 pi²</option>
+                  <option value="medium">400 - 500 pi²</option>
+                  <option value="large">&gt; 500 pi²</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Prix -->
+            <div class="search-filter-group">
+              <label for="filter-prix" class="search-filter-label">Budget</label>
+              <div class="search-select-wrap">
+                <select id="filter-prix" class="search-select">
+                  <option value="">Tous les budgets</option>
+                  <option value="low">&lt; 1 400 $ / mois</option>
+                  <option value="mid">1 400 $ - 1 600 $ / mois</option>
+                  <option value="high">&gt; 1 600 $ / mois</option>
+                </select>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="search-submit-wrap" style="display: flex; gap: 12px; justify-content: flex-end; width: 100%; margin-top: 16px;">
+            <button type="button" id="search-reset-btn" class="search-submit-btn" style="background: transparent; color: var(--forest); border: 2px solid var(--forest); display: none;">
+              Réinitialiser
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Listings Grid -->
+      <div class="rentals-grid-container">
+        <div class="table-count" id="table-count" style="margin-bottom: 24px;">0 logement</div>
+        <div class="rentals-grid" id="rentals-grid">
+          <!-- Dynamically populated by main.js -->
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="main.js"></script>
+</body>
+</html>

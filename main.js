@@ -1,13 +1,26 @@
+// Fallback for static HTML page preview (where wpThemeData is undefined)
+if (typeof wpThemeData === 'undefined') {
+  window.wpThemeData = {
+    homeUrl: "index.html",
+    locationsUrl: "location-appartements-etudiants-montreal.html",
+    projetsUrl: "projets.html",
+    quartierUrl: "quartier.html",
+    aproposUrl: "apropos.html",
+    mentionsLegalesUrl: "mentions-legales.html",
+    themeUrl: "",
+  };
+}
+
 // ── Nav data ──
 const navItems = [
-  { label: "Accueil", href: "index.html" },
-  { label: "Locations d'appartements", href: "index.html#locations" },
-  { label: "Le projet", href: "projet.html" },
-  { label: "Le quartier", href: "quartier.html" },
-  { label: "FAQ", href: "index.html#faq" },
-  { label: "Galerie", href: "index.html#galerie" },
-  { label: "À propos", href: "apropos.html" },
-  { label: "Contact", href: "index.html#footer" },
+  { label: "Accueil", href: wpThemeData.homeUrl },
+  { label: "Locations d'appartements", href: wpThemeData.locationsUrl },
+  { label: "Les projets", href: wpThemeData.projetsUrl },
+  { label: "Le quartier", href: wpThemeData.quartierUrl },
+  { label: "FAQ", href: wpThemeData.homeUrl + "#faq" },
+  { label: "Galerie", href: wpThemeData.homeUrl + "#galerie" },
+  { label: "À propos", href: wpThemeData.aproposUrl },
+  { label: "Contact", href: wpThemeData.homeUrl + "#footer" },
 ];
 
 // ── Marquee ──
@@ -135,7 +148,7 @@ function buildMobileNav() {
     inner.appendChild(wrap);
   });
   const cta = document.createElement('a');
-  cta.href = 'index.html#locations';
+  cta.href = wpThemeData.homeUrl + '#locations';
   cta.className = 'mobile-cta';
   cta.textContent = 'Louer un appartement';
   cta.addEventListener('click', () => { mobileOpen = false; updateMobileMenu(); });
@@ -211,31 +224,174 @@ window.addEventListener('scroll', () => {
 
 // ── Apartment table ──
 const units = [
-  { unite: "1",  superficie: 420, chambres: "1 chambre", sallesDeBain: 1, prix: 1400, occupation: "—", statut: "Occupé" },
-  { unite: "2",  superficie: 390, chambres: "1 chambre", sallesDeBain: 1, prix: 1350, occupation: "—", statut: "Occupé" },
-  { unite: "3",  superficie: 450, chambres: "1 chambre", sallesDeBain: 1, prix: 1425, occupation: "—", statut: "Occupé" },
-  { unite: "4",  superficie: 410, chambres: "1 chambre", sallesDeBain: 1, prix: 1380, occupation: "—", statut: "Occupé" },
-  { unite: "5",  superficie: 480, chambres: "1 chambre", sallesDeBain: 1, prix: 1450, occupation: "—", statut: "Occupé" },
-  { unite: "6",  superficie: 400, chambres: "1 chambre", sallesDeBain: 1, prix: 1360, occupation: "—", statut: "Occupé" },
-  { unite: "7",  superficie: 430, chambres: "1 chambre", sallesDeBain: 1, prix: 1410, occupation: "—", statut: "Occupé" },
-  { unite: "8",  superficie: 460, chambres: "1 chambre", sallesDeBain: 1, prix: 1440, occupation: "—", statut: "Occupé" },
-  { unite: "9",  superficie: 395, chambres: "1 chambre", sallesDeBain: 1, prix: 1355, occupation: "—", statut: "Occupé" },
-  { unite: "10", superficie: 470, chambres: "1 chambre", sallesDeBain: 1, prix: 1460, occupation: "—", statut: "Occupé" },
-  { unite: "11", superficie: 415, chambres: "1 chambre", sallesDeBain: 1, prix: 1390, occupation: "—", statut: "Occupé" },
-  { unite: "12", superficie: 440, chambres: "1 chambre", sallesDeBain: 1, prix: 1420, occupation: "—", statut: "Occupé" },
-  { unite: "13", superficie: 405, chambres: "1 chambre", sallesDeBain: 1, prix: 1370, occupation: "—", statut: "Occupé" },
-  { unite: "14", superficie: 490, chambres: "1 chambre", sallesDeBain: 1, prix: 1475, occupation: "—", statut: "Occupé" },
-  { unite: "15", superficie: 425, chambres: "1 chambre", sallesDeBain: 1, prix: 1395, occupation: "—", statut: "Occupé" },
-  { unite: "16", superficie: 400, chambres: "1 chambre", sallesDeBain: 1, prix: 1558, occupation: "Immédiate", statut: "Disponible" },
-  { unite: "17", superficie: 500, chambres: "1 chambre", sallesDeBain: 1, prix: 1375, occupation: "Immédiate", statut: "Disponible" },
+  { unite: "1935 Rue Tupper, apt. 16", superficie: 400, chambres: "1 chambre", sallesDeBain: 1, prix: 1558, occupation: "Immédiate", statut: "Disponible", projet: "tupper", secteur: "centre-ville", permalink: "http://localhost/LesImmeublesQC/appartements/16/" },
+  { unite: "1935 Rue Tupper, app. 17", superficie: 500, chambres: "1 chambre", sallesDeBain: 1, prix: 1375, occupation: "Immédiate", statut: "Disponible", projet: "tupper", secteur: "centre-ville", permalink: "http://localhost/LesImmeublesQC/appartements/17/" },
+  { unite: "2930 Rue Aubry (Top Floor)", superficie: 700, chambres: "2 chambres", sallesDeBain: 1, prix: 1675, occupation: "Immédiate", statut: "Disponible", projet: "aubry", secteur: "tetreaultville", permalink: "http://localhost/LesImmeublesQC/appartements/2930-rue-aubry-top-floor/" },
+  { unite: "2930 Rue Aubry (Ground / 2nd Floor)", superficie: 750, chambres: "2 chambres", sallesDeBain: 1, prix: 1650, occupation: "Immédiate", statut: "Disponible", projet: "aubry", secteur: "tetreaultville", permalink: "http://localhost/LesImmeublesQC/appartements/2930-rue-aubry-ground-2nd-floor/" },
+  { unite: "2930 Rue Aubry (Semi-Basement)", superficie: 650, chambres: "2 chambres", sallesDeBain: 1, prix: 1550, occupation: "Immédiate", statut: "Disponible", projet: "aubry", secteur: "tetreaultville", permalink: "http://localhost/LesImmeublesQC/appartements/2930-rue-aubry-semi-basement/" },
 ];
 
 let sortKey = 'prix';
 let sortDir = 'asc';
 
+function getFilteredUnits() {
+  const sourceUnits = (typeof wpThemeData !== 'undefined' && wpThemeData.units && wpThemeData.units.length > 0) ? wpThemeData.units : units;
+  
+  const query = (document.getElementById('search-text')?.value || '').toLowerCase().trim();
+  const secteur = document.getElementById('filter-secteur')?.value || '';
+  const projet = document.getElementById('filter-projet')?.value || '';
+  const disponibilite = document.getElementById('filter-disponibilite')?.value || '';
+  const superficie = document.getElementById('filter-superficie')?.value || '';
+  const prix = document.getElementById('filter-prix')?.value || '';
+
+  return sourceUnits.filter(u => {
+    // Resolve project and sector dynamically
+    const title = (u.unite || '').toLowerCase();
+    const chambresText = (u.chambres || '').toLowerCase();
+    const resolvedProjet = u.projet || (title.includes('aubry') ? 'aubry' : 'tupper');
+    const resolvedSecteur = u.secteur || (resolvedProjet === 'aubry' ? 'tetreaultville' : 'centre-ville');
+
+    // Keyword text search
+    if (query) {
+      const matchText = `${u.unite} ${u.chambres} ${resolvedProjet} ${resolvedSecteur} ${u.occupation || ''}`.toLowerCase();
+      if (!matchText.includes(query)) return false;
+    }
+
+    // Secteur filter
+    if (secteur) {
+      if (secteur === 'centre-ville' && resolvedSecteur !== 'centre-ville') return false;
+      if (secteur === 'tetreaultville' && resolvedSecteur !== 'tetreaultville') return false;
+      if (secteur !== 'centre-ville' && secteur !== 'tetreaultville' && resolvedSecteur !== secteur) return false;
+    }
+
+    // Projet filter
+    if (projet && resolvedProjet !== projet) return false;
+
+    // Disponibilité filter
+    if (disponibilite) {
+      const uStatut = (u.statut || '').toLowerCase();
+      if (disponibilite === 'disponible' && uStatut !== 'disponible') return false;
+      if (disponibilite === 'occupe' && uStatut !== 'occupé' && uStatut !== 'occupe') return false;
+      if (disponibilite === 'reserve' && uStatut !== 'réservé' && uStatut !== 'reserve') return false;
+    }
+
+    // Superficie filter
+    if (superficie) {
+      const area = parseInt(u.superficie) || 0;
+      if (superficie === 'small' && area >= 400) return false;
+      if (superficie === 'medium' && (area < 400 || area > 500)) return false;
+      if (superficie === 'large' && area <= 500) return false;
+    }
+
+    // Prix filter
+    if (prix) {
+      const price = parseInt(u.prix) || 0;
+      if (prix === 'low' && price >= 1400) return false;
+      if (prix === 'mid' && (price < 1400 || price > 1600)) return false;
+      if (prix === 'high' && price <= 1600) return false;
+    }
+
+    return true;
+  });
+}
+
+function updateResetButtonVisibility() {
+  const resetBtn = document.getElementById('search-reset-btn');
+  if (!resetBtn) return;
+  
+  const query = document.getElementById('search-text')?.value || '';
+  const secteur = document.getElementById('filter-secteur')?.value || '';
+  const projet = document.getElementById('filter-projet')?.value || '';
+  const disponibilite = document.getElementById('filter-disponibilite')?.value || '';
+  const superficie = document.getElementById('filter-superficie')?.value || '';
+  const prix = document.getElementById('filter-prix')?.value || '';
+
+  if (query || secteur || projet || disponibilite || superficie || prix) {
+    resetBtn.style.display = 'inline-block';
+  } else {
+    resetBtn.style.display = 'none';
+  }
+}
+
+function initSearch() {
+  const searchForm = document.getElementById('listings-search-form');
+  if (!searchForm) return;
+
+  // Parse URL Parameters
+  const params = new URLSearchParams(window.location.search);
+  
+  const qVal = params.get('q');
+  const secteurVal = params.get('secteur');
+  const projetVal = params.get('projet');
+  const dispoVal = params.get('disponibilite');
+  const superficieVal = params.get('superficie');
+  const prixVal = params.get('prix');
+
+  if (qVal !== null) document.getElementById('search-text').value = qVal;
+  if (secteurVal !== null) document.getElementById('filter-secteur').value = secteurVal;
+  if (projetVal !== null) document.getElementById('filter-projet').value = projetVal;
+  if (dispoVal !== null) document.getElementById('filter-disponibilite').value = dispoVal;
+  if (superficieVal !== null) document.getElementById('filter-superficie').value = superficieVal;
+  if (prixVal !== null) document.getElementById('filter-prix').value = prixVal;
+
+  updateResetButtonVisibility();
+
+  // Bind Event Listeners for Live Updates
+  const controls = [
+    { id: 'search-text', event: 'input' },
+    { id: 'filter-secteur', event: 'change' },
+    { id: 'filter-projet', event: 'change' },
+    { id: 'filter-disponibilite', event: 'change' },
+    { id: 'filter-superficie', event: 'change' },
+    { id: 'filter-prix', event: 'change' }
+  ];
+
+  controls.forEach(ctrl => {
+    const el = document.getElementById(ctrl.id);
+    if (el) {
+      el.addEventListener(ctrl.event, () => {
+        // Update URL Query parameters live without reloading
+        const newParams = new URLSearchParams();
+        controls.forEach(c => {
+          const val = document.getElementById(c.id)?.value || '';
+          if (val) {
+            const key = c.id === 'search-text' ? 'q' : c.id.replace('filter-', '');
+            newParams.set(key, val);
+          }
+        });
+        
+        const newQuery = newParams.toString();
+        const newUrl = window.location.pathname + (newQuery ? '?' + newQuery : '');
+        window.history.replaceState({}, '', newUrl);
+
+        updateResetButtonVisibility();
+        renderTable();
+      });
+    }
+  });
+
+  // Reset Button Action
+  const resetBtn = document.getElementById('search-reset-btn');
+  if (resetBtn) {
+    resetBtn.addEventListener('click', () => {
+      controls.forEach(c => {
+        const el = document.getElementById(c.id);
+        if (el) el.value = '';
+      });
+      window.history.replaceState({}, '', window.location.pathname);
+      updateResetButtonVisibility();
+      renderTable();
+    });
+  }
+}
+
 function renderTable() {
-  if (!document.getElementById('apt-tbody')) return;
-  let data = [...units].sort((a, b) => {
+  const grid = document.getElementById('rentals-grid');
+  if (!grid) return;
+  
+  let data = getFilteredUnits();
+  // Sort priority: Available units first
+  data.sort((a, b) => {
     const dispo = (x) => x.statut === 'Disponible' ? 0 : 1;
     if (dispo(a) !== dispo(b)) return dispo(a) - dispo(b);
     const av = a[sortKey], bv = b[sortKey];
@@ -243,32 +399,81 @@ function renderTable() {
     return sortDir === 'asc' ? av - bv : bv - av;
   });
 
-  document.getElementById('table-count').textContent =
-    `${data.length} logement${data.length !== 1 ? 's' : ''}`;
+  const countText = `${data.length} logement${data.length !== 1 ? 's' : ''}`;
+  document.getElementById('table-count').textContent = countText;
 
-  const tbody = document.getElementById('apt-tbody');
   if (data.length === 0) {
-    tbody.innerHTML = `<tr class="empty-row"><td colspan="4">Aucun logement pour ces critères.</td></tr>`;
+    grid.innerHTML = `<div class="empty-grid">Aucun logement pour ces critères.</div>`;
   } else {
-    const statutClass = { 'Disponible': 'statut-dispo', 'Loué': 'statut-loue', 'Réservé': 'statut-reserve' };
-    const isMobile = window.innerWidth < 768;
-    tbody.innerHTML = data.map(u => `
-      <tr>
-        <td class="td-unit">${u.unite}</td>
-        <td>${u.superficie} pi²</td>
-        <td>${u.chambres}</td>
-        <td class="td-price">${u.statut === 'Disponible' ? u.prix.toLocaleString('fr-CA') + (isMobile ? ' $' : ' $/mois') : '—'}</td>
-        <td><span class="statut-badge ${statutClass[u.statut] || ''}">${u.statut}</span></td>
-      </tr>
-    `).join('');
-  }
+    const statutClass = { 'Disponible': 'statut-dispo', 'Loué': 'statut-loue', 'Réservé': 'statut-reserve', 'Occupé': 'statut-loue' };
+    
+    grid.innerHTML = data.map((u, index) => {
+      const bedroomsText = u.chambres;
+      const statusLabel = u.statut;
+      const badgeClass = statutClass[u.statut] || 'statut-loue';
+      
+      let priceText = '—';
+      if (u.statut === 'Disponible') {
+        const formattedPrice = u.prix.toLocaleString('fr-CA');
+        priceText = `${formattedPrice} $`;
+      }
+      
+      const sizeText = u.superficie ? `${u.superficie} pi²` : '—';
+      
+      // Determine image to display
+      let imgUrl = '';
+      if (typeof wpThemeData !== 'undefined' && wpThemeData.themeUrl) {
+        imgUrl = u.photo_1 || (wpThemeData.themeUrl + 'assets/apt16/apt16_img0.webp');
+      } else {
+        imgUrl = `assets/apt16/apt16_img${index % 11}.webp`;
+      }
 
-  ['unite', 'superficie', 'chambres', 'prix', 'statut'].forEach(k => {
-    document.getElementById(`th-${k}`).classList.toggle('sort-active', k === sortKey);
-    const sa = document.getElementById(`sa-${k}`);
-    sa.classList.toggle('active', k === sortKey);
-    sa.classList.toggle('desc', k === sortKey && sortDir === 'desc');
-  });
+      // Address text based on project
+      const title = (u.unite || '').toLowerCase();
+      const resolvedProjet = u.projet || (title.includes('aubry') ? 'aubry' : 'tupper');
+      const addressText = resolvedProjet === 'aubry' 
+        ? "2930 Rue Aubry, Montréal (Tétreaultville)"
+        : "1935 Rue Tupper, Montréal (Centre-Ville)";
+
+      // Details or CTA Link
+      const ctaUrl = u.permalink || (typeof wpThemeData !== 'undefined' ? wpThemeData.homeUrl + '#footer' : '#');
+
+      return `
+        <div class="rental-card">
+          <a href="${ctaUrl}" class="rental-card-img-wrap">
+            <img src="${imgUrl}" alt="${u.unite}" class="rental-card-img" loading="lazy" />
+            <span class="statut-badge ${badgeClass} rental-card-badge">${statusLabel}</span>
+          </a>
+          <div class="rental-card-content">
+            <div class="rental-card-price-row">
+              <span class="rental-card-price">${priceText}</span>
+              ${u.statut === 'Disponible' ? '<span class="rental-card-period">/ mois</span>' : ''}
+            </div>
+            <h3 class="rental-card-title">${u.unite}</h3>
+            <div class="rental-card-specs">
+              <div class="rental-card-spec-item">
+                <svg class="spec-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4v16M22 4v16M2 8h20M2 14h20M6 8v6M18 8v6"/></svg>
+                <span>${bedroomsText}</span>
+              </div>
+              <div class="rental-card-spec-item">
+                <svg class="spec-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4zM4 9h16M9 4v16M14 4v16"/></svg>
+                <span>${u.sallesDeBain || 1} bain</span>
+              </div>
+              <div class="rental-card-spec-item">
+                <svg class="spec-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/></svg>
+                <span>${sizeText}</span>
+              </div>
+            </div>
+            <div class="rental-card-address">
+              <svg class="address-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>${addressText}</span>
+            </div>
+            <a href="${ctaUrl}" class="rental-card-cta">Voir appartement</a>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
 }
 
 function sortTable(key) {
@@ -280,17 +485,17 @@ function sortTable(key) {
 
 // ── Showcase Carousel ──
 const showcasePhotos = [
-  'assets/apt16/apt16_img0.jpeg',
-  'assets/apt16/apt16_img1.jpeg',
-  'assets/apt16/apt16_img2.jpeg',
-  'assets/apt16/apt16_img3.jpeg',
-  'assets/apt16/apt16_img4.jpeg',
-  'assets/apt16/apt16_img5.jpeg',
-  'assets/apt16/apt16_img6.jpeg',
-  'assets/apt16/apt16_img7.jpeg',
-  'assets/apt16/apt16_img8.jpeg',
-  'assets/apt16/apt16_img9.jpeg',
-  'assets/apt16/apt16_img10.jpeg',
+  wpThemeData.themeUrl + 'assets/apt16/apt16_img0.webp',
+  wpThemeData.themeUrl + 'assets/apt16/apt16_img1.webp',
+  wpThemeData.themeUrl + 'assets/apt16/apt16_img2.webp',
+  wpThemeData.themeUrl + 'assets/apt16/apt16_img3.webp',
+  wpThemeData.themeUrl + 'assets/apt16/apt16_img4.webp',
+  wpThemeData.themeUrl + 'assets/apt16/apt16_img5.webp',
+  wpThemeData.themeUrl + 'assets/apt16/apt16_img6.webp',
+  wpThemeData.themeUrl + 'assets/apt16/apt16_img7.webp',
+  wpThemeData.themeUrl + 'assets/apt16/apt16_img8.webp',
+  wpThemeData.themeUrl + 'assets/apt16/apt16_img9.webp',
+  wpThemeData.themeUrl + 'assets/apt16/apt16_img10.webp',
 ];
 let showcaseIdx = 0;
 
@@ -307,7 +512,11 @@ function showcaseGo(idx) {
     main.style.animation = '';
   }, 200);
   document.querySelectorAll('.showcase-thumb').forEach((btn, i) => {
-    btn.classList.toggle('active', i === showcaseIdx);
+    const isActive = i === showcaseIdx;
+    btn.classList.toggle('active', isActive);
+    if (isActive) {
+      btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' });
+    }
   });
 }
 
@@ -380,11 +589,7 @@ function toggleFaq(btn) {
 
 // ── Footer form ──
 function bindFooterForm() {
-  document.getElementById('footer-form')?.addEventListener('submit', function (e) {
-    e.preventDefault();
-    this.querySelectorAll('.footer-input, .footer-submit').forEach(el => el.disabled = true);
-    document.getElementById('footer-success').classList.add('visible');
-  });
+  // Handled natively by Contact Form 7 AJAX script
 }
 
 // ── POI card stack shuffle ──
@@ -417,24 +622,14 @@ function initPoiCardStack() {
 }
 
 // ── Init ──
-(async function () {
-  const base = document.querySelector('script[src="main.js"]')
-    ? '' : '../';
-
-  const [navbarHTML, footerHTML] = await Promise.all([
-    fetch(`${base}partials/navbar.html`).then(r => r.text()),
-    fetch(`${base}partials/footer.html`).then(r => r.text()),
-  ]);
-
-  document.getElementById('navbar-placeholder').outerHTML = navbarHTML;
-  document.getElementById('footer-placeholder').outerHTML = footerHTML;
-
+(function () {
   initMarquee();
   bindDropdownPanel();
   bindHamburger();
   bindFooterForm();
   buildDesktopNav();
   buildMobileNav();
+  initSearch();
   renderTable();
   initPoiCanvas();
   initPoiCardStack();

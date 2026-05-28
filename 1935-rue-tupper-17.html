@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>1935 Rue Tupper, app. 17 — Les Immeubles QC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div id="navbar-placeholder"></div>
+
+  <!-- ── Breadcrumbs ── -->
+  <div class="site-breadcrumbs" style="background: #ffffff; padding-top: 24px; padding-bottom: 24px;">
+    <a href="index.html">Accueil</a> <span class="separator">»</span> <a href="location-appartements-etudiants-montreal.html">Location d'appartements</a> <span class="separator">»</span> <span class="last">1935 Rue Tupper, app. 17</span>
+  </div>
+
+  <main class="single-apt-container">
+    <div class="single-apt-grid">
+      
+      <!-- Header Info -->
+      <div class="apt-detail-header">
+          <span class="apt-detail-eyebrow">Logement étudiant · Centre-ville</span>
+          <h1 class="apt-detail-title">1935 Rue Tupper, app. 17</h1>
+          <p class="apt-detail-subtitle">Situé au 1935 Rue Tupper, Montréal</p>
+        </div>
+
+        <!-- Image Showcase -->
+        <div class="apt-showcase">
+          <div class="apt-showcase-main-wrap">
+            <button class="apt-main-nav prev" onclick="singleShowcasePrev()" aria-label="Image précédente">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+            <img class="apt-showcase-main" id="single-showcase-main" src="assets/tupper17/tupper17_photo_1.jpg" alt="Intérieur de l'appartement 1935 Rue Tupper, app. 17 — Les Immeubles QC">
+            <button class="apt-main-nav next" onclick="singleShowcaseNext()" aria-label="Image suivante">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+          </div>
+          
+          <div class="apt-showcase-thumbs-outer">
+            <div class="apt-showcase-thumbs" id="thumbs-track">
+              <button class="apt-showcase-thumb active" onclick="singleShowcaseGo(0)"><img src="assets/tupper17/tupper17_photo_1.jpg" alt="Miniature 1"></button>
+              <button class="apt-showcase-thumb" onclick="singleShowcaseGo(1)"><img src="assets/tupper17/tupper17_photo_2.jpg" alt="Miniature 2"></button>
+              <button class="apt-showcase-thumb" onclick="singleShowcaseGo(2)"><img src="assets/tupper17/tupper17_photo_3.jpg" alt="Miniature 3"></button>
+              <button class="apt-showcase-thumb" onclick="singleShowcaseGo(3)"><img src="assets/tupper17/tupper17_photo_4.jpg" alt="Miniature 4"></button>
+              <button class="apt-showcase-thumb" onclick="singleShowcaseGo(4)"><img src="assets/tupper17/tupper17_photo_5.jpg" alt="Miniature 5"></button>
+              <button class="apt-showcase-thumb" onclick="singleShowcaseGo(5)"><img src="assets/tupper17/tupper17_photo_6.jpg" alt="Miniature 6"></button>
+              <button class="apt-showcase-thumb" onclick="singleShowcaseGo(6)"><img src="assets/tupper17/tupper17_photo_7.jpg" alt="Miniature 7"></button>
+              <button class="apt-showcase-thumb" onclick="singleShowcaseGo(7)"><img src="assets/tupper17/tupper17_photo_8.jpg" alt="Miniature 8"></button>
+              <button class="apt-showcase-thumb" onclick="singleShowcaseGo(8)"><img src="assets/tupper17/tupper17_photo_9.jpg" alt="Miniature 9"></button>
+              <button class="apt-showcase-thumb" onclick="singleShowcaseGo(9)"><img src="assets/tupper17/tupper17_photo_10.jpg" alt="Miniature 10"></button>
+              <button class="apt-showcase-thumb" onclick="singleShowcaseGo(10)"><img src="assets/tupper17/tupper17_photo_11.jpg" alt="Miniature 11"></button>
+              <button class="apt-showcase-thumb" onclick="singleShowcaseGo(11)"><img src="assets/tupper17/tupper17_photo_12.jpg" alt="Miniature 12"></button>
+              <button class="apt-showcase-thumb" onclick="singleShowcaseGo(12)"><img src="assets/tupper17/tupper17_photo_13.jpg" alt="Miniature 13"></button>
+              <button class="apt-showcase-thumb" onclick="singleShowcaseGo(13)"><img src="assets/tupper17/tupper17_photo_14.jpg" alt="Miniature 14"></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Description / Rich Text -->
+        <div class="apt-rich-description">
+          <h2 class="apt-section-title">Présentation du logement</h2>
+          <div class="apt-editor-content">
+            <p>Cet appartement d'une chambre a été récemment rénové pour offrir un espace de vie propre, moderne et fonctionnel au cœur du Shaughnessy Village au centre-ville de Montréal. Idéal pour un étudiant cherchant le confort à distance de marche des universités Concordia et McGill, et des métros Atwater et Georges-Vanier.</p>
+          </div>
+        </div>
+
+        <!-- Specifications -->
+        <div class="apt-specs-section">
+          <h2 class="apt-section-title">Fiche technique</h2>
+          <div class="apt-specs-grid">
+            <div class="apt-spec-item">
+              <span class="apt-spec-label">Superficie</span>
+              <span class="apt-spec-val">500 pi²</span>
+            </div>
+            <div class="apt-spec-item">
+              <span class="apt-spec-label">Chambres</span>
+              <span class="apt-spec-val">1 chambre</span>
+            </div>
+            <div class="apt-spec-item">
+              <span class="apt-spec-label">Salle de bain</span>
+              <span class="apt-spec-val">1 complète</span>
+            </div>
+            <div class="apt-spec-item">
+              <span class="apt-spec-label">Disponibilité</span>
+              <span class="apt-spec-val">Immédiate</span>
+            </div>
+            <div class="apt-spec-item" style="grid-column: span 2;">
+              <span class="apt-spec-label">Inclusions principales</span>
+              <span class="apt-spec-val">Réfrigérateur, cuisinière, chauffage (selon unité)</span>
+            </div>
+          </div>
+        </div>
+
+      <!-- ── Right Column: Sticky Pricing & Inquiry ── -->
+      <div class="single-apt-right">
+        <div class="apt-sidebar-card">
+          
+          <!-- Pricing Row -->
+          <div class="apt-sidebar-price-row">
+            <div>
+              <span class="apt-sidebar-price">1 375 $</span>
+              <span class="apt-sidebar-period">/ mois</span>
+            </div>
+            <span class="statut-badge statut-dispo">Disponible</span>
+          </div>
+
+          <div class="apt-sidebar-divider"></div>
+
+          <!-- Mini Details list -->
+          <ul class="apt-sidebar-details">
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+              1935 Rue Tupper, Montréal
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/></svg>
+              500 pi² · Rénové
+            </li>
+          </ul>
+
+          <!-- Contact Form Wrapper -->
+          <div class="apt-sidebar-form-wrap">
+            <h3 class="apt-sidebar-form-title">Planifiez une visite</h3>
+            
+            <!-- Static Form representation mimicking CF7 -->
+            <form action="#" method="post" class="wpcf7-form">
+              <div class="wpcf7-form-control-wrap">
+                <input type="text" name="your-name" placeholder="Votre nom" class="wpcf7-form-control" />
+              </div>
+              <div class="wpcf7-form-control-wrap">
+                <input type="email" name="your-email" placeholder="Votre adresse courriel" class="wpcf7-form-control" />
+              </div>
+              <div class="wpcf7-form-control-wrap">
+                <input type="tel" name="your-tel" placeholder="Votre numéro de téléphone" class="wpcf7-form-control" />
+              </div>
+              <div class="wpcf7-form-control-wrap">
+                <textarea name="your-message" rows="4" class="wpcf7-form-control"></textarea>
+              </div>
+              <div class="wpcf7-form-control-wrap acceptance-wrap">
+                <label class="footer-checkbox-label">
+                  <span class="footer-checkbox">
+                    <input type="checkbox" name="acceptance" value="1" />
+                  </span>
+                  <span class="wpcf7-list-item-label">J'accepte d'être contacté par Les Immeubles QC concernant ma demande de visite.</span>
+                </label>
+              </div>
+              <input type="submit" value="Envoyer la demande" class="wpcf7-submit" />
+            </form>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ── CSS Styles specifically for single template ── -->
+  <style>
+  .single-apt-container {
+    background: #faf9f7;
+    padding: 2.5rem 1.5rem 6rem;
+    min-height: 100vh;
+  }
+  
+  .single-apt-grid {
+    max-width: 70rem;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  
+  @media (min-width: 1024px) {
+    .single-apt-grid {
+      grid-template-columns: 60fr 40fr;
+      gap: 3rem;
+      grid-template-areas:
+        "header sidebar"
+        "showcase sidebar"
+        "description sidebar"
+        "specs sidebar";
+    }
+  }
+  
+  .apt-detail-header {
+    grid-area: header;
+    margin-bottom: 2rem;
+  }
+  
+  .apt-detail-eyebrow {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(0, 31, 91, 0.5);
+    font-family: var(--font);
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  
+  .apt-detail-title {
+    font-family: var(--font);
+    font-size: 2.75rem;
+    font-weight: 800;
+    color: var(--navy);
+    line-height: 1.1;
+    margin-bottom: 0.75rem;
+  }
+  
+  .apt-detail-subtitle {
+    font-size: 1.1rem;
+    color: rgba(0, 31, 91, 0.65);
+    font-weight: 500;
+  }
+  
+  /* Image Showcase */
+  .apt-showcase {
+    grid-area: showcase;
+    max-width: 50rem;
+    margin-bottom: 3rem;
+  }
+  
+  .apt-showcase-main-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 8/5;
+    border-radius: 1.25rem;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    background: #e6e4e0;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.06);
+  }
+  
+  .apt-showcase-main {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: opacity 0.2s ease-in-out;
+  }
+  
+  /* Main Nav Chevrons */
+  .apt-main-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.85);
+    border: none;
+    color: var(--navy);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    transition: background 0.2s, color 0.2s, transform 0.15s;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    z-index: 10;
+  }
+  
+  .apt-main-nav:hover {
+    background: white;
+    color: var(--forest);
+    transform: translateY(-50%) scale(1.05);
+  }
+  
+  .apt-main-nav.prev { left: 16px; }
+  .apt-main-nav.next { right: 16px; }
+  
+  /* Thumbs Area */
+  .apt-showcase-thumbs-outer {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    position: relative;
+  }
+  
+  .apt-showcase-thumbs {
+    display: flex;
+    gap: 0.75rem;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 0.25rem 0;
+    /* Hide scrollbar */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .apt-showcase-thumbs::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .apt-showcase-thumb {
+    width: 4.75rem;
+    height: 4.75rem;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    border: 2px solid transparent;
+    cursor: pointer;
+    padding: 0;
+    flex-shrink: 0;
+    background: none;
+    transition: border-color 0.2s, transform 0.15s;
+  }
+  
+  .apt-showcase-thumb:hover {
+    transform: scale(1.03);
+  }
+  
+  .apt-showcase-thumb.active {
+    border-color: var(--forest);
+    transform: scale(1.03);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+  
+  .apt-showcase-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  
+  /* Thumbs Nav Chevrons */
+  .apt-thumb-nav {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background: white;
+    border: 1px solid rgba(0, 31, 91, 0.1);
+    color: var(--navy);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s, transform 0.15s;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+    flex-shrink: 0;
+  }
+  
+  .apt-thumb-nav:hover {
+    border-color: var(--forest);
+    color: var(--forest);
+    transform: scale(1.08);
+  }
+  
+  /* Page Section Content */
+  .apt-section-title {
+    font-family: var(--font);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 1.25rem;
+  }
+  
+  .apt-rich-description {
+    grid-area: description;
+    margin-bottom: 3rem;
+    border-bottom: 1px solid rgba(0, 31, 91, 0.1);
+    padding-bottom: 2.5rem;
+  }
+  
+  .apt-editor-content p {
+    font-size: 1rem;
+    color: rgba(0, 31, 91, 0.7);
+    line-height: 1.75;
+    margin-bottom: 1rem;
+  }
+  
+  /* Specs Grid */
+  .apt-specs-section {
+    grid-area: specs;
+    background: white;
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+  }
+  
+  .apt-specs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  
+  .apt-spec-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+  }
+  
+  .apt-spec-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: rgba(0, 31, 91, 0.45);
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    font-family: var(--font);
+  }
+  
+  .apt-spec-val {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--navy);
+  }
+  
+  /* Sticky Sidebar Column */
+  .single-apt-right {
+    grid-area: sidebar;
+  }
+  
+  @media (min-width: 1024px) {
+    .single-apt-right {
+      position: sticky;
+      top: 6.25rem;
+      align-self: start;
+    }
+  }
+  
+  .apt-sidebar-card {
+    background: white;
+    border-radius: 1.25rem;
+    padding: 2.25rem;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.05);
+  }
+  
+  .apt-sidebar-price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .apt-sidebar-price {
+    font-family: var(--font);
+    font-size: 2.25rem;
+    font-weight: 800;
+    color: var(--navy);
+  }
+  
+  .apt-sidebar-period {
+    font-size: 1rem;
+    color: rgba(0, 31, 91, 0.5);
+    font-weight: 500;
+  }
+  
+  .apt-sidebar-divider {
+    height: 1px;
+    background: rgba(0, 31, 91, 0.08);
+    margin: 24px 0;
+  }
+  
+  .apt-sidebar-details {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 32px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .apt-sidebar-details li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.95rem;
+    color: rgba(0, 31, 91, 0.7);
+    font-weight: 500;
+  }
+  
+  .apt-sidebar-details li svg {
+    color: var(--forest);
+  }
+  
+  /* Sidebar Contact Form custom inputs style */
+  .apt-sidebar-form-title {
+    font-family: var(--font);
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--navy);
+    margin-bottom: 20px;
+  }
+  
+  .apt-sidebar-form-wrap .wpcf7-form-control-wrap {
+    margin-bottom: 12px;
+    display: block;
+  }
+  
+  .apt-sidebar-form-wrap input[type="text"],
+  .apt-sidebar-form-wrap input[type="email"],
+  .apt-sidebar-form-wrap input[type="tel"],
+  .apt-sidebar-form-wrap textarea {
+    width: 100%;
+    background: #fcfbfa;
+    border: 1px solid rgba(0, 31, 91, 0.1);
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-family: var(--font);
+    font-size: 0.9rem;
+    color: var(--navy);
+    transition: border-color 0.2s, background 0.2s;
+  }
+  
+  .apt-sidebar-form-wrap input::placeholder,
+  .apt-sidebar-form-wrap textarea::placeholder {
+    color: rgba(0, 31, 91, 0.45);
+  }
+  
+  .apt-sidebar-form-wrap .footer-checkbox-label,
+  .apt-sidebar-form-wrap .wpcf7-list-item-label,
+  .apt-sidebar-form-wrap .wpcf7-acceptance label,
+  .apt-sidebar-form-wrap .wpcf7-not-valid-tip {
+    color: rgba(0, 31, 91, 0.7) !important;
+  }
+  
+  .apt-sidebar-form-wrap .wpcf7-not-valid-tip {
+    font-size: 0.8rem;
+    margin-top: 4px;
+  }
+  
+  .apt-sidebar-form-wrap .footer-checkbox {
+    border: none !important;
+    background: transparent !important;
+    border-radius: 0 !important;
+    width: auto !important;
+    height: auto !important;
+  }
+  
+  .apt-sidebar-form-wrap .footer-checkbox input[type="checkbox"] {
+    width: 18px !important;
+    height: 18px !important;
+    min-width: 18px !important;
+    border: 1.5px solid rgba(0, 31, 91, 0.3) !important;
+    border-radius: 4px !important;
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    cursor: pointer;
+    margin-top: 2px;
+    background: transparent;
+    transition: background .2s, border-color .2s;
+    position: relative;
+    outline: none;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  
+  .apt-sidebar-form-wrap .footer-checkbox input[type="checkbox"]:checked {
+    background: var(--forest) !important;
+    border-color: var(--forest) !important;
+  }
+  
+  .apt-sidebar-form-wrap .footer-checkbox input[type="checkbox"]:checked::after {
+    content: '' !important;
+    position: absolute !important;
+    left: 5px !important;
+    top: 1px !important;
+    width: 5px !important;
+    height: 9px !important;
+    border: solid white !important;
+    border-width: 0 2px 2px 0 !important;
+    transform: rotate(45deg) !important;
+  }
+  
+  .apt-sidebar-form-wrap input:focus,
+  .apt-sidebar-form-wrap textarea:focus {
+    outline: none;
+    border-color: var(--forest);
+    background: white;
+  }
+  
+  .apt-sidebar-form-wrap input[type="submit"] {
+    width: 100%;
+    background: var(--navy);
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    font-family: var(--font);
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    margin-top: 12px;
+  }
+  
+  .apt-sidebar-form-wrap input[type="submit"]:hover {
+    background: #002d80;
+  }
+  
+  .apt-sidebar-form-wrap input[type="submit"]:active {
+    transform: scale(.97);
+  }
+  </style>
+  
+  <!-- ── JavaScript for Single Page Carousel & CF7 Prefill ── -->
+  <script>
+  const singlePhotos = [
+    "assets/tupper17/tupper17_photo_1.jpg",
+    "assets/tupper17/tupper17_photo_2.jpg",
+    "assets/tupper17/tupper17_photo_3.jpg",
+    "assets/tupper17/tupper17_photo_4.jpg",
+    "assets/tupper17/tupper17_photo_5.jpg",
+    "assets/tupper17/tupper17_photo_6.jpg",
+    "assets/tupper17/tupper17_photo_7.jpg",
+    "assets/tupper17/tupper17_photo_8.jpg",
+    "assets/tupper17/tupper17_photo_9.jpg",
+    "assets/tupper17/tupper17_photo_10.jpg",
+    "assets/tupper17/tupper17_photo_11.jpg",
+    "assets/tupper17/tupper17_photo_12.jpg",
+    "assets/tupper17/tupper17_photo_13.jpg",
+    "assets/tupper17/tupper17_photo_14.jpg"
+  ];
+  let singleIdx = 0;
+  
+  function singleShowcaseGo(idx) {
+    const main = document.getElementById('single-showcase-main');
+    if (!main) return;
+    singleIdx = ((idx % singlePhotos.length) + singlePhotos.length) % singlePhotos.length;
+    main.style.opacity = '0';
+    setTimeout(() => {
+      main.src = singlePhotos[singleIdx];
+      main.style.opacity = '1';
+    }, 180);
+  
+    const thumbs = document.querySelectorAll('.apt-showcase-thumb');
+    thumbs.forEach((btn, i) => {
+      btn.classList.toggle('active', i === singleIdx);
+    });
+  
+    // Smoothly scroll active thumbnail into view/center inside track
+    const activeThumb = thumbs[singleIdx];
+    if (activeThumb) {
+      activeThumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    }
+  }
+  
+  function singleShowcasePrev() {
+    singleShowcaseGo(singleIdx - 1);
+  }
+  
+  function singleShowcaseNext() {
+    singleShowcaseGo(singleIdx + 1);
+  }
+  
+  function singleShowcaseScrollThumbs(amount) {
+    const track = document.getElementById('thumbs-track');
+    if (track) {
+      track.scrollBy({ left: amount, behavior: 'smooth' });
+    }
+  }
+  
+  document.addEventListener('DOMContentLoaded', function() {
+    const messageField = document.querySelector('.apt-sidebar-form-wrap textarea[name="your-message"]');
+    if (messageField) {
+      messageField.value = "Bonjour,\n\nJe souhaiterais planifier une visite pour l'appartement : 1935 Rue Tupper, app. 17 situé au 1935 Rue Tupper. Merci !";
+    }
+  });
+  </script>
+
+  <div id="footer-placeholder"></div>
+  <script src="main.js"></script>
+
+</body>
+</html>
