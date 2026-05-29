@@ -10,197 +10,200 @@
   <link rel="stylesheet" href="style.css" />
   <style>
 
-    /* ── Hero ── */
-    .p-hero {
-      position: relative;
-      overflow: hidden;
-      height: 560px;
-      background: var(--navy);
-    }
-    @media (max-width: 767px) { .p-hero { height: 380px; } }
-    .p-hero-img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      object-position: center 60%;
-      display: block;
-      opacity: .5;
-    }
-    .p-hero-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(160deg, rgba(0,31,91,.6) 0%, rgba(28,56,40,.35) 100%);
-    }
-    .p-hero-text {
-      position: absolute; bottom: 56px; left: 64px; right: 64px;
-    }
-    @media (max-width: 767px) { .p-hero-text { bottom: 28px; left: 24px; right: 24px; } }
-    .p-hero-eyebrow {
-      font-size: .75rem; font-weight: 600; letter-spacing: .18em;
-      text-transform: uppercase; color: rgba(255,255,255,.7);
-      font-family: var(--font); margin-bottom: 12px; display: block;
-    }
-    .p-hero-title {
-      font-family: var(--font); font-weight: 800;
-      font-size: clamp(2.25rem, 5vw, 4rem);
-      color: white; line-height: 1.1; letter-spacing: -.02em;
-    }
-
-    /* ── Intro ── */
-    .p-intro {
+    /* ── Projects section ── */
+    .projects-section {
       background: var(--cream);
-      padding: 96px 64px;
-    }
-    @media (max-width: 1023px) { .p-intro { padding: 72px 32px; } }
-    @media (max-width: 767px)  { .p-intro { padding: 56px 20px; } }
-    .p-intro-inner {
-      max-width: 1280px; margin: 0 auto;
-      display: grid; grid-template-columns: 1fr;
-      gap: 56px; align-items: center;
-    }
-    @media (min-width: 1024px) { .p-intro-inner { grid-template-columns: 1fr 1fr; gap: 80px; } }
-
-    .p-eyebrow {
-      font-size: .75rem; font-weight: 600; letter-spacing: .14em;
-      text-transform: uppercase; color: rgba(28,56,40,.5);
-      font-family: var(--font); margin-bottom: 16px; display: block;
-    }
-    .p-title {
-      font-family: var(--font); font-weight: 800;
-      font-size: clamp(2rem, 4vw, 3rem);
-      color: var(--forest); line-height: 1.1;
-      letter-spacing: -.02em; margin-bottom: 24px;
-    }
-    .p-body {
-      font-size: 1rem; color: rgba(28,56,40,.75);
-      line-height: 1.75; margin-bottom: 16px;
-    }
-    .p-body:last-of-type { margin-bottom: 0; }
-
-    .p-intro-img-wrap {
-      border-radius: 24px; overflow: hidden;
-      height: 520px;
-    }
-    @media (max-width: 767px) { .p-intro-img-wrap { height: 280px; } }
-    .p-intro-img { width: 100%; height: 100%; object-fit: cover; display: block; }
-
-    /* ── Stats strip ── */
-    .p-stats {
-      background: var(--navy);
-      padding: 64px;
-    }
-    @media (max-width: 1023px) { .p-stats { padding: 56px 32px; } }
-    @media (max-width: 767px)  { .p-stats { padding: 48px 20px; } }
-    .p-stats-inner {
-      max-width: 1280px; margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 40px;
-    }
-    @media (min-width: 768px) { .p-stats-inner { grid-template-columns: repeat(4, 1fr); } }
-    .p-stat-num {
-      font-family: var(--font); font-weight: 800;
-      font-size: clamp(2.5rem, 5vw, 3.75rem);
-      color: white; line-height: 1; letter-spacing: -.02em;
-      margin-bottom: 8px;
-    }
-    .p-stat-label {
-      font-size: .875rem; color: rgba(255,255,255,.55);
-      line-height: 1.5;
-    }
-
-    /* ── Feature rows ── */
-    .p-feature {
-      background: var(--cream);
-      padding: 96px 64px;
-    }
-    .p-feature.alt { background: #fff; }
-    @media (max-width: 1023px) { .p-feature { padding: 72px 32px; } }
-    @media (max-width: 767px)  { .p-feature { padding: 56px 20px; } }
-    .p-feature-inner {
-      max-width: 1280px; margin: 0 auto;
-      display: grid; grid-template-columns: 1fr;
-      gap: 56px; align-items: center;
-    }
-    @media (min-width: 1024px) { .p-feature-inner { grid-template-columns: 1fr 1fr; gap: 80px; } }
-    @media (min-width: 1024px) { .p-feature-inner.reverse { direction: rtl; } }
-    @media (min-width: 1024px) { .p-feature-inner.reverse > * { direction: ltr; } }
-
-    .p-feature-img-wrap {
-      border-radius: 20px; overflow: hidden;
-      height: 460px;
-    }
-    @media (max-width: 767px) { .p-feature-img-wrap { height: 260px; } }
-    .p-feature-img { width: 100%; height: 100%; object-fit: cover; display: block; }
-
-    .p-checklist {
-      list-style: none;
-      display: flex; flex-direction: column; gap: 12px;
-      margin-top: 24px;
-    }
-    .p-checklist li {
-      display: flex; align-items: flex-start; gap: 12px;
-      font-size: .9375rem; color: rgba(28,56,40,.75); line-height: 1.55;
-    }
-    .p-checklist li::before {
-      content: '';
-      display: block;
-      width: 18px; height: 18px;
-      min-width: 18px;
-      border-radius: 50%;
-      background: var(--forest);
-      margin-top: 2px;
-      background-image: url("data:image/svg+xml,%3Csvg width='10' height='8' viewBox='0 0 10 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 4l3 3 5-6' stroke='white' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: center;
-    }
-
-    /* ── CTA banner ── */
-    .p-cta {
-      background: var(--forest);
       padding: 80px 64px;
-      text-align: center;
     }
-    @media (max-width: 767px) { .p-cta { padding: 56px 20px; } }
-    .p-cta-inner { max-width: 640px; margin: 0 auto; }
-    .p-cta-title {
-      font-family: var(--font); font-weight: 800;
-      font-size: clamp(1.75rem, 4vw, 2.75rem);
-      color: white; line-height: 1.15;
-      letter-spacing: -.02em; margin-bottom: 16px;
-    }
-    .p-cta-body {
-      font-size: .9375rem; color: rgba(255,255,255,.65);
-      line-height: 1.7; margin-bottom: 32px;
-    }
-    .p-cta-btn {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 14px 28px; background: white; color: var(--forest);
-      font-size: .875rem; font-weight: 700; border-radius: 12px;
-      font-family: var(--font); transition: background .2s, transform .15s;
-    }
-    .p-cta-btn:hover { background: #f0ebe0; }
-    .p-cta-btn:active { transform: scale(.95); }
+    @media (max-width: 1023px) { .projects-section { padding: 64px 32px; } }
+    @media (max-width: 767px)  { .projects-section { padding: 48px 20px; } }
 
-    /* ── Gallery ── */
-    .p-gallery-wrap {
+    .projects-inner {
       max-width: 1280px;
       margin: 0 auto;
     }
-    .p-gallery-grid {
+
+    .projects-heading {
+      margin-bottom: 56px;
+    }
+
+    .projects-eyebrow {
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: rgba(28,56,40,.5);
+      font-family: var(--font);
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .projects-title {
+      font-family: var(--font);
+      font-weight: 800;
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--forest);
+      line-height: 1.1;
+      letter-spacing: -.02em;
+      margin-bottom: 20px;
+    }
+
+    .projects-desc {
+      font-size: 1rem;
+      color: rgba(28,56,40,.7);
+      line-height: 1.75;
+      max-width: 560px;
+    }
+
+    .projects-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-      margin-top: 32px;
+      grid-template-columns: 1fr;
+      gap: 32px;
     }
-    @media (min-width: 768px) { .p-gallery-grid { grid-template-columns: repeat(3, 1fr); } }
-    .p-gallery-item {
-      border-radius: 16px;
+    @media (min-width: 768px) {
+      .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+      }
+    }
+
+    /* ── Project card ── */
+    .proj-card {
+      display: flex;
+      flex-direction: column;
+      background: white;
+      border-radius: 24px;
       overflow: hidden;
-      height: 220px;
+      text-decoration: none;
+      box-shadow: 0 8px 32px rgba(0,0,0,.04);
+      border: 1px solid rgba(0,0,0,.05);
+      transition: transform .3s cubic-bezier(.25,.46,.45,.94), box-shadow .3s;
     }
-    @media (min-width: 768px) { .p-gallery-item { height: 260px; } }
-    .p-gallery-item img {
-      width: 100%; height: 100%;
-      object-fit: cover; display: block;
+
+    .proj-card-img-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+    }
+
+    .proj-card-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .55s ease;
+    }
+
+    .proj-card-badge {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      background: rgba(28,56,40,.88);
+      backdrop-filter: blur(8px);
+      color: white;
+      font-family: var(--font);
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 9999px;
+    }
+
+    .proj-card-body {
+      display: flex;
+      flex-direction: column;
+      padding: 2rem;
+      flex-grow: 1;
+    }
+
+    .proj-card-eyebrow {
+      font-size: .7rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba(28,56,40,.45);
+      font-family: var(--font);
+      margin-bottom: .625rem;
+    }
+
+    .proj-card-title {
+      font-family: var(--font);
+      font-size: clamp(1.5rem, 2.5vw, 2rem);
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.1;
+      letter-spacing: -.02em;
+      margin-bottom: .375rem;
+    }
+
+    .proj-card-address {
+      font-size: .875rem;
+      color: rgba(0,31,91,.45);
+      font-weight: 500;
+      margin-bottom: 1.125rem;
+    }
+
+    .proj-card-desc {
+      font-size: .9375rem;
+      color: rgba(0,31,91,.68);
+      line-height: 1.72;
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
+    }
+
+    .proj-card-meta {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .proj-card-avail {
+      display: inline-flex;
+      align-items: center;
+      gap: .375rem;
+      padding: 5px 13px;
+      background: #dcfce7;
+      color: #15803d;
+      font-size: .78rem;
+      font-weight: 700;
+      font-family: var(--font);
+      border-radius: 9999px;
+    }
+    .proj-card-avail::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #15803d;
+      flex-shrink: 0;
+    }
+
+    .proj-card-units {
+      font-size: .78rem;
+      color: rgba(0,31,91,.38);
+      font-weight: 500;
+    }
+
+    .proj-card-cta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+      width: 100%;
+      padding: .875rem 1.5rem;
+      background: var(--navy);
+      color: white;
+      font-family: var(--font);
+      font-size: .9rem;
+      font-weight: 700;
+      border-radius: 12px;
+      transition: background .2s;
+    }
+    .proj-card-cta:hover {
+      background: #002d80;
     }
 
   </style>
@@ -222,7 +225,7 @@
 
           <nav class="nav-links" id="nav-links"></nav>
 
-          <a href="index.html#footer" class="nav-cta">Planifier une visite</a>
+          <a href="location-appartements-etudiants-montreal.html" class="nav-cta">Louer un appartement</a>
 
           <button class="hamburger" id="hamburger" aria-label="Menu">
             <span></span><span></span><span></span>
@@ -242,18 +245,127 @@
     </div>
   </div>
 
-
   <main id="primary-content">
 
-  <!-- ── Hero ── -->
-  <div class="p-hero">
-    <img class="p-hero-img" src="assets/u_o1a2thbk1b-montreal-7294815_1280.webp" alt="Immeuble résidentiel au centre-ville de Montréal" />
-    <div class="p-hero-overlay"></div>
-    <div class="p-hero-text">
-      <span class="p-hero-eyebrow">1935 Rue Tupper · Montréal</span>
-      <h1 class="p-hero-title">Les projets :<br>des logements pensés<br>pour la vie étudiante</h1>
+    <!-- ── Hero ── -->
+    <div class="p-hero">
+      <img class="p-hero-img" src="assets/u_o1a2thbk1b-montreal-7294815_1280.webp" alt="Immeubles résidentiels au centre-ville de Montréal" loading="eager" />
+      <div class="p-hero-overlay"></div>
+      <div class="p-hero-text">
+        <span class="p-hero-eyebrow">Nos immeubles · Montréal</span>
+        <h1 class="p-hero-title">Des logements étudiants<br>dans deux quartiers<br>de Montréal</h1>
+      </div>
     </div>
-  </div>
+
+    <!-- ── Breadcrumbs ── -->
+    <div class="site-breadcrumbs">
+      <span><a href="index.html">Accueil</a> » <span class="breadcrumb_last">Les projets</span></span>
+    </div>
+
+    <!-- ── Project Cards ── -->
+    <section class="projects-section">
+      <div class="projects-inner">
+
+        <div class="projects-heading">
+          <span class="projects-eyebrow">Nos immeubles</span>
+          <h2 class="projects-title">Nos immeubles de choix à Montréal</h2>
+          <p class="projects-desc">Chaque projet représente un immeuble géré par Les Immeubles QC. Sélectionnez un projet pour voir les appartements disponibles et planifier une visite.</p>
+        </div>
+
+        <div class="projects-grid">
+
+          <!-- Projet 1 : 1935 Rue Tupper -->
+          <a class="proj-card" href="location-appartements-etudiants-montreal.html?projet=tupper">
+            <div class="proj-card-img-wrap">
+              <img class="proj-card-img" src="assets/hero.webp" alt="1935 Rue Tupper, Shaughnessy Village, centre-ville de Montréal" loading="lazy" />
+              <span class="proj-card-badge">Centre-Ville</span>
+            </div>
+            <div class="proj-card-body">
+              <p class="proj-card-eyebrow">Projet · 17 logements</p>
+              <h2 class="proj-card-title">1935 Rue Tupper</h2>
+              <p class="proj-card-address">Montréal (Québec) H3H 1N6</p>
+              <p class="proj-card-desc">Immeuble de 17 appartements 1 chambre rénovés dans le quartier Shaughnessy Village. À distance de marche des métros Atwater et Georges-Vanier, et des campus de Concordia, Dawson, LaSalle et McGill.</p>
+              <div class="proj-card-meta">
+                <span class="proj-card-avail">2 disponibles</span>
+                <span class="proj-card-units">sur 17 unités</span>
+              </div>
+              <span class="proj-card-cta">
+                Voir les appartements
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+              </span>
+            </div>
+          </a>
+
+          <!-- Projet 2 : 2930 Rue Aubry -->
+          <a class="proj-card" href="location-appartements-etudiants-montreal.html?projet=aubry">
+            <div class="proj-card-img-wrap">
+              <img class="proj-card-img" src="assets/aubry.jpg" alt="2930 Rue Aubry, Tétreaultville, Montréal" loading="lazy" />
+              <span class="proj-card-badge">Tétreaultville</span>
+            </div>
+            <div class="proj-card-body">
+              <p class="proj-card-eyebrow">Projet · 3 logements</p>
+              <h2 class="proj-card-title">2930 Rue Aubry</h2>
+              <p class="proj-card-address">Montréal (Québec) H1W 0A9</p>
+              <p class="proj-card-desc">Triplex spacieux avec 3 appartements de 2 chambres, situé dans le quartier résidentiel de Tétreaultville. Des logements modernes et rénovés offrant plus d'espace pour ceux qui cherchent un cadre de vie calme à Montréal.</p>
+              <div class="proj-card-meta">
+                <span class="proj-card-avail">3 disponibles</span>
+                <span class="proj-card-units">sur 3 unités</span>
+              </div>
+              <span class="proj-card-cta">
+                Voir les appartements
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+              </span>
+            </div>
+          </a>
+
+          <!-- Projet 3 : 7800 - 7802 Av. Pigeon -->
+          <a class="proj-card" href="location-appartements-etudiants-montreal.html?projet=pigeon">
+            <div class="proj-card-img-wrap">
+              <img class="proj-card-img" src="assets/pigeon.jpg" alt="7800 - 7802 Av. Pigeon, Anjou, Montréal" loading="lazy" />
+              <span class="proj-card-badge">Anjou</span>
+            </div>
+            <div class="proj-card-body">
+              <p class="proj-card-eyebrow">Projet · 0 logement</p>
+              <h2 class="proj-card-title">7800 - 7802 Av. Pigeon</h2>
+              <p class="proj-card-address">Montréal (Québec) H1G 4M2</p>
+              <p class="proj-card-desc">Duplex charmant comprenant deux grands logements spacieux et lumineux au cœur d'Anjou. Parfait pour les étudiants et familles recherchant un milieu de vie résidentiel paisible, à proximité des parcs et des transports en commun.</p>
+              <div class="proj-card-meta">
+                <span class="proj-card-avail proj-card-avail--none">Complet</span>
+                <span class="proj-card-units">sur 0 unité</span>
+              </div>
+              <span class="proj-card-cta">
+                Voir les appartements
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+              </span>
+            </div>
+          </a>
+
+          <!-- Projet 4 : 8301 Boulevard des Galeries-d'Anjou -->
+          <a class="proj-card" href="location-appartements-etudiants-montreal.html?projet=anjou">
+            <div class="proj-card-img-wrap">
+              <img class="proj-card-img" src="assets/galeries-anjou.jpg" alt="8301 Boulevard des Galeries-d'Anjou, Anjou, Montréal" loading="lazy" />
+              <span class="proj-card-badge">Anjou</span>
+            </div>
+            <div class="proj-card-body">
+              <p class="proj-card-eyebrow">Projet · 0 logement</p>
+              <h2 class="proj-card-title">8301 Boulevard des Galeries-d'Anjou</h2>
+              <p class="proj-card-address">Montréal (Anjou) H1J 1W9</p>
+              <p class="proj-card-desc">Logements modernes idéalement situés à Anjou, juste en face des Galeries d'Anjou. Offre un accès exceptionnel aux boutiques, restaurants, lignes de bus express et axes routiers majeurs pour un quotidien pratique et dynamique à Montréal.</p>
+              <div class="proj-card-meta">
+                <span class="proj-card-avail proj-card-avail--none">Complet</span>
+                <span class="proj-card-units">sur 0 unité</span>
+              </div>
+              <span class="proj-card-cta">
+                Voir les appartements
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+              </span>
+            </div>
+          </a>
+
+
+        </div>
+      </div>
+    </section>
 
   </main>
 
@@ -308,7 +420,6 @@
       </div>
     </footer>
   </div>
-
 
   <script src="main.js"></script>
 </body>

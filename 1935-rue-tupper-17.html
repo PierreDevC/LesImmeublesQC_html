@@ -26,7 +26,7 @@
 
           <nav class="nav-links" id="nav-links"></nav>
 
-          <a href="index.html#footer" class="nav-cta">Planifier une visite</a>
+          <a href="location-appartements-etudiants-montreal.html" class="nav-cta">Louer un appartement</a>
 
           <button class="hamburger" id="hamburger" aria-label="Menu">
             <span></span><span></span><span></span>
@@ -199,8 +199,9 @@
     background: #faf9f7;
     padding: 2.5rem 1.5rem 6rem;
     min-height: 100vh;
+    overflow-x: hidden;
   }
-  
+
   .single-apt-grid {
     max-width: 70rem;
     margin: 0 auto;
@@ -209,10 +210,15 @@
     gap: 3rem;
     align-items: start;
   }
+
+  .single-apt-grid > * {
+    min-width: 0;
+    max-width: 100%;
+  }
   
   @media (min-width: 1024px) {
     .single-apt-grid {
-      grid-template-columns: 60fr 40fr;
+      grid-template-columns: minmax(0, 60fr) minmax(0, 40fr);
       gap: 3rem;
       grid-template-areas:
         "header sidebar"

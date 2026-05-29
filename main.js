@@ -152,7 +152,7 @@ function buildMobileNav() {
     inner.appendChild(wrap);
   });
   const cta = document.createElement('a');
-  cta.href = wpThemeData.homeUrl + '#locations';
+  cta.href = wpThemeData.locationsUrl;
   cta.className = 'mobile-cta';
   cta.textContent = 'Louer un appartement';
   cta.addEventListener('click', () => { mobileOpen = false; updateMobileMenu(); });
@@ -238,9 +238,9 @@ window.addEventListener('scroll', () => {
 const units = [
   { unite: "1935 Rue Tupper, apt. 16", superficie: 400, chambres: "1 chambre", sallesDeBain: 1, prix: 1558, occupation: "Immédiate", statut: "Disponible", projet: "tupper", secteur: "centre-ville", permalink: "http://localhost/LesImmeublesQC/appartements/16/" },
   { unite: "1935 Rue Tupper, app. 17", superficie: 500, chambres: "1 chambre", sallesDeBain: 1, prix: 1375, occupation: "Immédiate", statut: "Disponible", projet: "tupper", secteur: "centre-ville", permalink: "http://localhost/LesImmeublesQC/appartements/17/" },
-  { unite: "2930 Rue Aubry (Top Floor)", superficie: 700, chambres: "2 chambres", sallesDeBain: 1, prix: 1675, occupation: "Immédiate", statut: "Disponible", projet: "aubry", secteur: "tetreaultville", permalink: "http://localhost/LesImmeublesQC/appartements/2930-rue-aubry-top-floor/" },
-  { unite: "2930 Rue Aubry (Ground / 2nd Floor)", superficie: 750, chambres: "2 chambres", sallesDeBain: 1, prix: 1650, occupation: "Immédiate", statut: "Disponible", projet: "aubry", secteur: "tetreaultville", permalink: "http://localhost/LesImmeublesQC/appartements/2930-rue-aubry-ground-2nd-floor/" },
-  { unite: "2930 Rue Aubry (Semi-Basement)", superficie: 650, chambres: "2 chambres", sallesDeBain: 1, prix: 1550, occupation: "Immédiate", statut: "Disponible", projet: "aubry", secteur: "tetreaultville", permalink: "http://localhost/LesImmeublesQC/appartements/2930-rue-aubry-semi-basement/" },
+  { unite: "2930 Rue Aubry (Top Floor)", superficie: 700, chambres: "2 chambres", sallesDeBain: 1, prix: 1675, occupation: "Immédiate", statut: "Occupé", projet: "aubry", secteur: "tetreaultville", permalink: "http://localhost/LesImmeublesQC/appartements/2930-rue-aubry-top-floor/" },
+  { unite: "2930 Rue Aubry (Ground / 2nd Floor)", superficie: 750, chambres: "2 chambres", sallesDeBain: 1, prix: 1650, occupation: "Immédiate", statut: "Occupé", projet: "aubry", secteur: "tetreaultville", permalink: "http://localhost/LesImmeublesQC/appartements/2930-rue-aubry-ground-2nd-floor/" },
+  { unite: "2930 Rue Aubry (Semi-Basement)", superficie: 650, chambres: "2 chambres", sallesDeBain: 1, prix: 1550, occupation: "Immédiate", statut: "Occupé", projet: "aubry", secteur: "tetreaultville", permalink: "http://localhost/LesImmeublesQC/appartements/2930-rue-aubry-semi-basement/" }
 ];
 
 let sortKey = 'prix';
@@ -260,6 +260,9 @@ function getFilteredUnits() {
     // Resolve project and sector dynamically
     const title = (u.unite || '').toLowerCase();
     const chambresText = (u.chambres || '').toLowerCase();
+    if (!u.projet || !u.secteur) {
+      console.warn(`[Les Immeubles QC] Unit "${u.unite}" is missing taxonomy terms (projet="${u.projet}", secteur="${u.secteur}"). Assign terms in WP Admin to avoid misclassification.`);
+    }
     const resolvedProjet = u.projet || (title.includes('aubry') ? 'aubry' : 'tupper');
     const resolvedSecteur = u.secteur || (resolvedProjet === 'aubry' ? 'tetreaultville' : 'centre-ville');
 
@@ -270,11 +273,7 @@ function getFilteredUnits() {
     }
 
     // Secteur filter
-    if (secteur) {
-      if (secteur === 'centre-ville' && resolvedSecteur !== 'centre-ville') return false;
-      if (secteur === 'tetreaultville' && resolvedSecteur !== 'tetreaultville') return false;
-      if (secteur !== 'centre-ville' && secteur !== 'tetreaultville' && resolvedSecteur !== secteur) return false;
-    }
+    if (secteur && resolvedSecteur !== secteur) return false;
 
     // Projet filter
     if (projet && resolvedProjet !== projet) return false;
